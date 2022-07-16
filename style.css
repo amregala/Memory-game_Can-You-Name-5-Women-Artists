@@ -6,8 +6,15 @@
 
 body {
   /*height: 100vh;*/
-  display: flex;
+  /*display: flex;*/
   background-color: #4286af;
+  color: white;
+}
+
+h1,
+h3 {
+  margin: auto;
+  text-align: center;
 }
 
 .memory-game {
