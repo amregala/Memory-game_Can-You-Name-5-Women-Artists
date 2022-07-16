@@ -16,7 +16,7 @@ h3 {
   margin: auto;
   text-align: center;
 }
-
+/* container holding cards*/
 .memory-game {
   background-color: yellowgreen;
   width: 640px;
