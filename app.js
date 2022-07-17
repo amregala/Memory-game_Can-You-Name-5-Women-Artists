@@ -47,7 +47,7 @@ function checkForMatch() {
   unflipCards();
 }
 
-//this functino removes the event listener from the matching cards, not allowing them to be clicked again
+//this function removes the event listener from the matching cards, not allowing them to be clicked again
 function disableCards() {
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
@@ -60,6 +60,15 @@ function unflipCards() {
     secondCard.classList.remove("flip");
   }, 1000);
 }
+
+//since the cards are in a flex box they are organized in order, so to shuffle them Math.floor with Math.random can be used. would used their position in the flex to assign them new positions.
+function shuffle() {
+  allCards.forEach(card => {
+    let randomize = Math.floor(Math.random() * 12);
+    card.style.order = randomize;
+  });
+}
+shuffle();
 
 allCards.forEach(card => card.addEventListener("click", flipCard));
 
