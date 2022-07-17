@@ -1,3 +1,5 @@
+/* font-family: 'Comfortaa', sans-serif;*/
+
 * {
   padding: 0;
   margin: 0;
@@ -17,18 +19,19 @@ body {
 h1 {
   font-size: 45px;
   padding-top: 200px;
-  border: solid yellow 2px;
+  /*border: solid yellow 2px;*/
 }
 
 h1,
 h3 {
+  font-family: "Comfortaa", sans-serif;
   margin: auto;
   text-align: center;
 }
 
 h3 {
   border-radius: 5px;
-  border: solid white 2px;
+  /*border: solid white 2px;*/
   width: 65%;
   margin-top: 25px;
   margin-bottom: 25px;
@@ -37,6 +40,7 @@ h3 {
   display: flex;
 }
 p {
+  font-family: "Comfortaa", sans-serif;
   padding: 40px;
   font-size: 35px;
 }
