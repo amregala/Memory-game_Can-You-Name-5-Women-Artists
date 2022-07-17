@@ -9,7 +9,7 @@ let playerLives = 6;
 let score = 0;
 // link text
 playerLivesCount.textContent = playerLives;
-
+scoreCount.textContent = score;
 // generate the data
 const getData = () => [
   { imgSrc: "imgs/barbara-kruger.jpeg", name: "barbara-kruger" },
@@ -87,12 +87,12 @@ const checkCards = e => {
       console.log("wrong");
       flippedCards.forEach(card => {
         card.classList.remove("flipped");
-        setTimeout(() => card.classList.remove("toggleCard"), 1000);
+        setTimeout(() => card.classList.remove("toggleCard"), 500);
       });
       playerLives--;
       playerLivesCount.textContent = playerLives;
       if (playerLives === 0) {
-        restart("...try again");
+        restart("🫠...try again");
       }
     }
   }
@@ -105,7 +105,7 @@ const checkCards = e => {
   }
   // Run a check to see if we won the game
   if (toggleCard.length === 12) {
-    restart("You're a champ");
+    restart("You're a champ 🏆");
   }
 };
 
