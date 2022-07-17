@@ -4,6 +4,7 @@ const allCards = document.querySelectorAll(".memory-card");
 const card = document.querySelector(".img");
 const frontImages = document.querySelectorAll("img.front-face");
 const imgArray = Array.from(frontImages, image => image.src);
+const displayResult = document.querySelector("#result");
 const chosenCards = [];
 // console.log("imgArray Length", imgArray.length);
 // console.log("type of imgArray check", typeof imgArray);
@@ -13,6 +14,7 @@ const chosenCards = [];
 
 let hasFlippedCard = false;
 let firstCard, secondCard;
+let score = 0;
 
 // *flip card functionality and stores value of the first 2 cards chosen
 function flipCard() {
@@ -41,12 +43,19 @@ function checkForMatch() {
   if (firstCard.title === secondCard.title) {
     //console.log("this is a match");
     disableCards();
+    scoreKeeper();
     return;
   }
 
   unflipCards();
 }
-
+// this function is displaying the score results on the screen
+function scoreKeeper() {
+  score += 10;
+  console.log(score);
+  return (displayResult.innerHTML = score);
+  //return;
+}
 //this function removes the event listener from the matching cards, not allowing them to be clicked again
 function disableCards() {
   firstCard.removeEventListener("click", flipCard);
