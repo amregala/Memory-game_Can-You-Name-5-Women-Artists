@@ -1,5 +1,9 @@
 console.log("Memory Card Game - Can You Name Five Women Artist?");
 
+
+document.addEventListener("DOMContentLoaded", () => {
+
+
 //grab a couple of things
 
 const section = document.querySelector("section");
@@ -135,6 +139,7 @@ const restart = text => {
 
 cardGenerator();
 
+})
 // ! ANOTHER VERION THAT WAS BASED OFF OF DIVS IN HTML AND USING FLEX-BOX ORDER TO RANDOMIZE. BUT DIFFICULT TO MOVE THROUGH AND CLUNKY IF I WANTED TO ADD MORE CARDS OR CHANGE OTHER ELEMENTS
 // const allCards = document.querySelectorAll(".memory-card");
 // const card = document.querySelector(".img");
