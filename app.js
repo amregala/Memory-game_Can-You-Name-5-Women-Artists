@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       imgSrc: "imgs/artemisia-gentileschi.webp",
       name: "artemisia-gentileschi",
     },
-    { imgSrc: "yayoi-kusama.webp", name: "yayoi-kusama" },
+    { imgSrc: "imgs/yayoi-kusama.png", name: "yayoi-kusama" },
     { imgSrc: "imgs/barbara-kruger.jpeg", name: "barbara-kruger" },
     { imgSrc: "imgs/hayv-kahraman.jpeg", name: "havy-kahraman" },
     { imgSrc: "imgs/mary-weatherford.WebP", name: "mary-weatherford" },
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       imgSrc: "imgs/artemisia-gentileschi.webp",
       name: "artemisia-gentileschi",
     },
-    { imgSrc: "imgs/yayoi-kusama.webp", name: "yayoi-kusama" },
+    { imgSrc: "imgs/yayoi-kusama.png", name: "yayoi-kusama" },
   ];
   console.log(getData());
   console.log(typeof getData());
