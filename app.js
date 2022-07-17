@@ -5,7 +5,12 @@ const card = document.querySelector(".img");
 const frontImages = document.querySelectorAll("img.front-face");
 const imgArray = Array.from(frontImages, image => image.src);
 const displayResult = document.querySelector("#result");
-const chosenCards = [];
+const playerLivesCount = document.querySelector("span");
+let playerLives = 6;
+
+// link text
+playerLivesCount.textContent = playerLives;
+//const chosenCards = [];
 // console.log("imgArray Length", imgArray.length);
 // console.log("type of imgArray check", typeof imgArray);
 // console.log(Object.values(imgArray));
@@ -45,6 +50,13 @@ function checkForMatch() {
     disableCards();
     scoreKeeper();
     return;
+  } else {
+    playerLives--;
+    playerLivesCount.textContent = playerLives;
+    if (playerLives === 0) {
+      // ! - Create restart logic
+      console.log("restart...try again");
+    }
   }
 
   unflipCards();
