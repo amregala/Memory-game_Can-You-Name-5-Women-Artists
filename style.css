@@ -105,6 +105,10 @@ p {
 .toggleCard {
   transform: rotateY(180deg);
 }
+.face {
+  transform: rotateY(-180deg);
+}
+
 /* memory card pseduo class which is the keyword , preceded by a colon - it is added  to the end of selectors to specify you want to style the selected elemtns, and only when they are in certain state
 .memory-card:active {
   transform: scale(0.97);
