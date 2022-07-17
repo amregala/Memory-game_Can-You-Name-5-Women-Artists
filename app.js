@@ -5,33 +5,74 @@ const card = document.querySelector(".img");
 const frontImages = document.querySelectorAll("img.front-face");
 const imgArray = Array.from(frontImages, image => image.src);
 const chosenCards = [];
-
 // console.log("imgArray Length", imgArray.length);
 // console.log("type of imgArray check", typeof imgArray);
 // console.log(Object.values(imgArray));
 // console.log("frontImages access:", frontImages[0].className);
 // console.log("title check", frontImages[0].title);
 
-// *flip card functionality and push title of chosen card into an empty array
+let hasFlippedCard = false;
+let firstCard, secondCard;
+
+// *flip card functionality and stores value of the first 2 cards chosen
 function flipCard() {
-  this.classList.toggle("flip");
-  let cardId = this.title;
-  chosenCards.push(cardId);
-  if (chosenCards.length === 2) {
-    setTimeout(checkForMatch, 500);
+  this.classList.add("flip");
+  console.log("this card", this.classList);
+
+  if (!hasFlippedCard) {
+    hasFlippedCard = true;
+    firstCard = this;
+    console.log("first-card", this);
+    return;
   }
-  console.log(chosenCards);
+
+  secondCard = this;
+  console.log("second-card:", this);
+  hasFlippedCard = false;
+
+  checkForMatch();
 }
+
+// this function checks the titles on the first and second cards choosen in the function flipCard - if they match the pair of cards is "disabled" (the cards staying permenantly flipped) - they are disabled through function disableCards
+// if the cards are not a match then they flip over again
+function checkForMatch() {
+  console.log("firstCard", firstCard);
+  console.log("secondCard", secondCard);
+  if (firstCard.title === secondCard.title) {
+    //console.log("this is a match");
+    disableCards();
+    return;
+  }
+
+  unflipCards();
+}
+
+//this functino removes the event listener from the matching cards, not allowing them to be clicked again
+function disableCards() {
+  firstCard.removeEventListener("click", flipCard);
+  secondCard.removeEventListener("click", flipCard);
+}
+
+//this function flips the cards that did not pair up back over again
+function unflipCards() {
+  setTimeout(() => {
+    firstCard.classList.remove("flip");
+    secondCard.classList.remove("flip");
+  }, 1000);
+}
+
 allCards.forEach(card => card.addEventListener("click", flipCard));
 
-// * this function checks to see if the cards pushed into the chosen cards array when flipped match
-function checkForMatch() {
-  if (chosenCards[0].title === chosenCards[1].title) {
-    console.log("this is a match");
-  } else {
-    console.log("better luck next time");
-  }
-}
+// _____________________________________
+// * attempting an alternative method of possibly pushing matched cards into this array. pushign cards into array and comparing cards there. this function checks to see if the cards pushed into the chosen cards array when flipped match
+//let cardId = this.title;
+//chosenCards.push(cardId);
+//return;
+
+// if (chosenCards.length === 2) {
+//   setTimeout(checkForMatch, 500);
+// }
+// console.log(chosenCards);
 
 // * lets me know how many cards I have
 // const count = selector => {
