@@ -5,8 +5,12 @@
 }
 
 body {
-  /*height: 100vh;*/
+  height: 100vh;
   /*display: flex;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-color: black;
   color: white;
 }
@@ -18,13 +22,22 @@ h3 {
 }
 /* container holding cards*/
 .memory-game {
-  background-color: yellowgreen;
-  width: 640px;
+  background-color: #344966;
+  display: grid;
+  grid-template-columns: repeat(4, 8rem);
+  grid-template-rows: repeat(4, 8em);
+  grid-gap: 2rem;
+  perspective: 800px;
+}
+/*
+  Styling from other style
+  (width: 640px;
   height: 640px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   perspective: 1000px;
+  
 }
 
 .memory-card {
@@ -37,21 +50,34 @@ h3 {
   transform-style: preserve-3d;
   transition: transform 0.5s;
 }
+*/
 
-.front-face,
-.back-face {
+.card {
+  background-color: white;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
+}
+
+.face,
+.back {
   width: 100%;
   height: 100%;
   padding: 20px;
   position: absolute;
-  border-radius: 5px;
+  pointer-events: none;
+  border-radius: 2px;
+}
+.back {
   background: #1c7ccc;
   backface-visibility: hidden;
 }
-.front-face {
+
+.toggleCard {
   transform: rotateY(180deg);
 }
-/* memory card pseduo class which is the keyword , preceded by a colon - it is added  to the end of selectors to specify you want to style the selected elemtns, and only when they are in certain state*/
+/* memory card pseduo class which is the keyword , preceded by a colon - it is added  to the end of selectors to specify you want to style the selected elemtns, and only when they are in certain state
 .memory-card:active {
   transform: scale(0.97);
   transition: transform 0.2s;
@@ -60,3 +86,4 @@ h3 {
 .memory-card.flip {
   transform: rotateY(180deg);
 }
+*/
