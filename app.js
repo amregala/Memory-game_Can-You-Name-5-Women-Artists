@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { imgSrc: "imgs/barbara-kruger.jpeg", name: "barbara-kruger" },
     { imgSrc: "imgs/hayv-kahraman.jpeg", name: "havy-kahraman" },
     { imgSrc: "imgs/mary-weatherford.WebP", name: "mary-weatherford" },
-    { imgSrc: "imgs/tamara-de-lempicka.webP", name: "tamara-de-lempicka" },
+    { imgSrc: "imgs/tamara-de-lempicka.png", name: "tamara-de-lempicka" },
     { imgSrc: "imgs/zaha-hadid-2.jpeg", name: "zaha-hadid" },
     { imgSrc: "imgs/alma-thomas.jpeg", name: "alma-thomas" },
     {
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { imgSrc: "imgs/barbara-kruger.jpeg", name: "barbara-kruger" },
     { imgSrc: "imgs/hayv-kahraman.jpeg", name: "havy-kahraman" },
     { imgSrc: "imgs/mary-weatherford.WebP", name: "mary-weatherford" },
-    { imgSrc: "imgs/tamara-de-lempicka.webP", name: "tamara-de-lempicka" },
+    { imgSrc: "imgs/tamara-de-lempicka.png", name: "tamara-de-lempicka" },
     { imgSrc: "imgs/zaha-hadid-2.jpeg", name: "zaha-hadid" },
     { imgSrc: "imgs/alma-thomas.jpeg", name: "alma-thomas" },
     {
