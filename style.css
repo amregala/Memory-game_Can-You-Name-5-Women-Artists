@@ -15,9 +15,10 @@ body {
   flex-direction: column;
   background-color: black;
   color: white;
+  font-size: 75%;
 }
 h1 {
-  font-size: 45px;
+  /*font-size: 45px;*/
   padding-top: 200px;
   /*border: solid yellow 2px;*/
 }
@@ -31,7 +32,8 @@ h3 {
 
 h3 {
   width: 75%;
-  font-size: 16px;
+  /*font-size: 16px;*/
+
   line-height: 1.6;
   border-radius: 5px;
   /*border: solid white 2px;*/
@@ -49,10 +51,15 @@ p {
 }
 /* container holding cards*/
 .memory-game {
+  /*width: 610px;
+  height: 610px;*/
   background-color: #344966;
   display: grid;
+  /*grid-template-columns: fit-content(50%);
+  grid-template-rows: fit-content(50%);
+  */
   grid-template-columns: repeat(4, 8rem);
-  grid-template-rows: repeat(4, 8em);
+  grid-template-rows: repeat(4, 8rem);
   grid-gap: 2rem;
   perspective: 800px;
 }

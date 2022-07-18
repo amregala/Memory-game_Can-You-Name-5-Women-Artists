@@ -1,8 +1,8 @@
 console.log("Memory Card Game - Can You Name Five Women Artist?");
 
+// adding as a safeguard but not really needed as elements are being appended from JS
 document.addEventListener("DOMContentLoaded", () => {
   //grab a couple of things
-
   const section = document.querySelector("section");
   const playerLivesCount = document.querySelector("#lives");
   const scoreCount = document.querySelector("#score");
@@ -100,18 +100,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       } else {
         console.log("wrong");
+        console.log(playerLives);
         flippedCards.forEach(card => {
           card.classList.remove("flipped");
-          setTimeout(() => card.classList.remove("toggleCard"), 2000);
+          setTimeout(() => card.classList.remove("toggleCard"), 1500);
         });
         playerLives--;
+        console.log("subtraction happened", playerLives);
         playerLivesCount.textContent = playerLives;
+
+        console.log("right before restart", playerLives);
         if (playerLives === 0) {
-          restart("🫠...try again");
+          setTimeout(() => {
+            restart("🫠...try again");
+          }, 800);
         }
       }
     }
-
     function scoreKeeper() {
       score += 10;
       console.log("score function scoreKeeper", score);
@@ -145,11 +150,12 @@ document.addEventListener("DOMContentLoaded", () => {
     playerLivesCount.textContent = playerLives;
     score = 0;
     scoreCount.textContent = score;
-    setTimeout(() => window.alert(text), 500);
+    setTimeout(() => window.alert(text), 850);
   };
 
   cardGenerator();
-});
+}); // this belongs to the DOM CONTENT LOADED AT VERY TOP
+
 // ! ANOTHER VERION THAT WAS BASED OFF OF DIVS IN HTML AND USING FLEX-BOX ORDER TO RANDOMIZE. BUT DIFFICULT TO MOVE THROUGH AND CLUNKY IF I WANTED TO ADD MORE CARDS OR CHANGE OTHER ELEMENTS
 // const allCards = document.querySelectorAll(".memory-card");
 // const card = document.querySelector(".img");
