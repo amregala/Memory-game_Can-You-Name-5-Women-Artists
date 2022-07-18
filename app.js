@@ -86,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(clickedCard);
 
     //Logic
+
     if (flippedCards.length === 2) {
       if (
         flippedCards[0].getAttribute("name") ===
@@ -101,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("wrong");
         flippedCards.forEach(card => {
           card.classList.remove("flipped");
-          setTimeout(() => card.classList.remove("toggleCard"), 500);
+          setTimeout(() => card.classList.remove("toggleCard"), 2000);
         });
         playerLives--;
         playerLivesCount.textContent = playerLives;
