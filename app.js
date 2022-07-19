@@ -2,8 +2,22 @@ console.log("Memory Card Game - Can You Name Five Women Artist?");
 
 // adding as a safeguard but not really needed as elements are being appended from JS
 document.addEventListener("DOMContentLoaded", () => {
+  // class Player {
+  //   constructor(name, finalScore) {
+  //     this.name = name;
+  //     this.score = finalScore;
+  //   }
+
+  // }
+
+  // const player1 = new Player ("Player 1")
+  // const player2 = new Player ("Player 2")
+
   //grab a couple of things
   const section = document.querySelector("section");
+  const card1 = document.querySelector("#artist1");
+  const card2 = document.querySelector("#artist2");
+  let flippedCardsArray = [];
   const playerLivesCount = document.querySelector("#lives");
   const scoreCount = document.querySelector("#score");
   let playerLives = 6;
@@ -80,42 +94,67 @@ document.addEventListener("DOMContentLoaded", () => {
   // Check Cards
   const checkCards = e => {
     const clickedCard = e.target;
+    flippedCardsArray.push(clickedCard);
+    console.log("flipped Cards Array", flippedCardsArray);
     clickedCard.classList.add("flipped");
     const flippedCards = document.querySelectorAll(".flipped");
     const toggleCard = document.querySelectorAll(".toggleCard");
-    console.log(clickedCard);
+    console.log("clicked card", clickedCard);
+    console.log("toggle on", toggleCard);
+
+    // card1.textContent = flippedCards[0].getAttribute("name");
+    // card2.textContent = flippedCards[1].getAttribute("name");
 
     //Logic
-
     if (flippedCards.length === 2) {
-      if (
-        flippedCards[0].getAttribute("name") ===
-        flippedCards[1].getAttribute("name")
-      ) {
-        console.log("match");
-        scoreKeeper();
-        flippedCards.forEach(card => {
-          card.classList.remove("flipped");
-          card.style.pointerEvents = "none";
-        });
-      } else {
-        console.log("wrong");
-        console.log(playerLives);
-        flippedCards.forEach(card => {
-          card.classList.remove("flipped");
-          setTimeout(() => card.classList.remove("toggleCard"), 1500);
-        });
-        playerLives--;
-        console.log("subtraction happened", playerLives);
-        playerLivesCount.textContent = playerLives;
+      card1.textContent = flippedCardsArray[0].getAttribute("name");
+      card2.textContent = flippedCardsArray[1].getAttribute("name");
 
-        console.log("right before restart", playerLives);
-        if (playerLives === 0) {
-          setTimeout(() => {
-            restart("🫠...try again");
-          }, 800);
+      setTimeout(() => {
+        if (
+          flippedCards[0].getAttribute("name") ===
+          flippedCards[1].getAttribute("name")
+        ) {
+          console.log("match");
+          scoreKeeper();
+          flippedCards.forEach(card => {
+            card.classList.remove("flipped");
+            card.style.pointerEvents = "none";
+          });
+          // card1.textContent = "";
+          // card2.textContent = "";
+        } else {
+          console.log("wrong");
+          console.log(playerLives);
+          flippedCards.forEach(card => {
+            card.classList.remove("flipped");
+            setTimeout(() => card.classList.remove("toggleCard"), 800);
+          });
+          // card1.textContent = "";
+          // card2.textContent = "";
+          playerLives--;
+          console.log("subtraction happened", playerLives);
+          playerLivesCount.textContent = playerLives;
+
+          console.log("right before restart", playerLives);
+          if (playerLives === 0) {
+            setTimeout(() => {
+              restart("🫠...try again");
+            }, 800);
+          }
         }
-      }
+        // ! should this go here? Or further below test
+        // if (toggleCard.length === 16) {
+        //   restart("You're a champ 🏆");
+        // }
+
+        setTimeout(() => {
+          console.log("clearing artist content");
+          card1.textContent = "";
+          card2.textContent = "";
+          flippedCardsArray.length = 0;
+        }, 750);
+      }, 2700);
     }
     function scoreKeeper() {
       score += 10;
@@ -127,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (toggleCard.length === 16) {
       restart("You're a champ 🏆");
     }
-  };
+  }; //end of checkCards function
 
   // Restart
   const restart = text => {
