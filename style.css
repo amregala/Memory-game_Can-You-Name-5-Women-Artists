@@ -1,4 +1,7 @@
-/* font-family: 'Comfortaa', sans-serif;*/
+/* 
+font-family: 'Comfortaa', sans-serif;
+font-family: 'Poppins', sans-serif;
+*/
 
 * {
   padding: 0;
@@ -9,80 +12,76 @@
 body {
   /*height: 100vh;*/
   /*display: flex;*/
-
   /*justify-content: center;
   align-items: center;
   flex-direction: column;*/
   background-color: black;
   color: #fff3c7;
   margin-left: 2%;
-
-  /* font-size: 75%;*/
 }
 
 .middle-container {
   display: flex;
 }
+/*----------------------------------*/
+/* STYLING FOR ELEMENTS ON SIDEBAR*/
+/*--------------------------------*/
 .side {
+  margin-left: 15px;
   width: 250px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  border: solid red 2px;
+  /*border: solid red 2px;*/
 }
 h1 {
-  font-size: 35px;
-  padding-top: 35px;
-  border: solid yellow 2px;
+  width: 90%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 40px;
+  line-height: 1;
+  /* border: solid yellow 2px;*/
 }
 
-h1,
-h3 {
-  font-family: "Comfortaa", sans-serif;
-  /*margin: auto;
-  text-align: center;*/
-}
-
-h3 {
-  width: 65%;
-  font-size: 16px;
-  line-height: 1.6;
-  border-radius: 5px;
-  border: solid white 2px;
-  margin-top: 15px;
-  margin-bottom: 5px;
-}
 .resultsDisplay {
-  border: solid white 2px;
   margin-top: 35px;
   margin-bottom: 5px;
+  /* border: solid white 2px;*/
 }
 .resultsDisplay p {
   display: flex;
   display: inline;
   font-family: "Comfortaa", sans-serif;
   padding: 15px;
-  font-size: 16px;
+  font-size: 14px;
 }
-
+.cardTitle {
+  margin-top: 20px;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
 .artist-bar {
-  /*margin: auto;*/
-  margin-top: 25px;
+  padding-top: 10px;
+  padding-left: 8px;
   background-color: #fff3c7;
   color: black;
   font-family: "Comfortaa", sans-serif;
   font-size: 14px;
-  height: 35px;
+  height: 40px;
   width: 200px;
   border-radius: 50px;
   border: 1px solid black;
   align-self: center;
 }
-
 .about {
-  margin-top: 25px;
+  margin-top: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
 }
-/* container holding cards*/
+
+/*----------------------------------*/
+/* STYLING FOR GRID/CARDS*/
+/*--------------------------------*/
 .memory-game {
   width: 610px;
   height: 610px;
@@ -90,42 +89,17 @@ h3 {
   /*grid-template-columns: fit-content(50%);
   grid-template-rows: fit-content(50%);
   */
-
   /*width: 45%;*/
   display: flex;
-
-  background-color: #344966;
   display: grid;
-
   grid-template-columns: repeat(4, 8rem);
   grid-template-rows: repeat(4, 8rem);
   grid-gap: 2rem;
   perspective: 800px;
   margin-bottom: 50px;
-  border: solid white 2px;
+  /*background-color: #344966;
+  border: solid white 2px;*/
 }
-/*
-  Styling from other style
-  (width: 640px;
-  height: 640px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  perspective: 1000px;
-  
-}
-
-.memory-card {
-  width: calc(25% - 10px);
-  height: calc(33.333% - 10px);
-  margin: 5px;
-  position: relative;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  transform: scale(1);
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
-}
-*/
 
 .card {
   background-color: white;
@@ -165,5 +139,27 @@ h3 {
 
 .memory-card.flip {
   transform: rotateY(180deg);
+}
+
+/*
+  Styling from other style
+  (width: 640px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+  
+}
+
+.memory-card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
 }
 */
