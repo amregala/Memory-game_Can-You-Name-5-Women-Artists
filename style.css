@@ -9,14 +9,26 @@
 body {
   /*height: 100vh;*/
   /*display: flex;*/
-  display: flex;
-  justify-content: center;
+
+  /*justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column;*/
   background-color: black;
-  color: white;
+  color: #fff3c7;
+  margin-left: 2%;
 
   /* font-size: 75%;*/
+}
+
+.middle-container {
+  display: flex;
+}
+.side {
+  width: 250px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border: solid red 2px;
 }
 h1 {
   font-size: 35px;
@@ -27,8 +39,8 @@ h1 {
 h1,
 h3 {
   font-family: "Comfortaa", sans-serif;
-  margin: auto;
-  text-align: center;
+  /*margin: auto;
+  text-align: center;*/
 }
 
 h3 {
@@ -41,25 +53,50 @@ h3 {
   margin-bottom: 5px;
 }
 .resultsDisplay {
-  display: flex;
   border: solid white 2px;
+  margin-top: 35px;
   margin-bottom: 5px;
 }
-p {
+.resultsDisplay p {
+  display: flex;
+  display: inline;
   font-family: "Comfortaa", sans-serif;
   padding: 15px;
-  font-size: 15px;
+  font-size: 16px;
 }
 
+.artist-bar {
+  /*margin: auto;*/
+  margin-top: 25px;
+  background-color: #fff3c7;
+  color: black;
+  font-family: "Comfortaa", sans-serif;
+  font-size: 14px;
+  height: 35px;
+  width: 200px;
+  border-radius: 50px;
+  border: 1px solid black;
+  align-self: center;
+}
+
+.about {
+  margin-top: 25px;
+}
 /* container holding cards*/
 .memory-game {
-  /*width: 610px;
-  height: 610px;*/
+  width: 610px;
+  height: 610px;
+  margin-top: 15px;
   /*grid-template-columns: fit-content(50%);
   grid-template-rows: fit-content(50%);
   */
+
+  /*width: 45%;*/
+  display: flex;
+
   background-color: #344966;
   display: grid;
+
   grid-template-columns: repeat(4, 8rem);
   grid-template-rows: repeat(4, 8rem);
   grid-gap: 2rem;
