@@ -2,27 +2,20 @@ console.log("Memory Card Game - Can You Name Five Women Artist?");
 
 // adding as a safeguard but not really needed as elements are being appended from JS
 document.addEventListener("DOMContentLoaded", () => {
-  // class Player {
-  //   constructor(name, finalScore) {
-  //     this.name = name;
-  //     this.score = finalScore;
-  //   }
-
-  // }
-
-  // const player1 = new Player ("Player 1")
-  // const player2 = new Player ("Player 2")
-
   //grab a couple of things
   const section = document.querySelector("section");
   const card1 = document.querySelector("#artist1");
   const card2 = document.querySelector("#artist2");
+  const gameBoard = document.querySelector(".gameBoard");
   let flippedCardsArray = [];
   const playerLivesCount = document.querySelector("#lives");
   const scoreCount = document.querySelector("#score");
   let playerLives = 6;
   let score = 0;
-  // link text
+  let lockboard = false;
+  let scoreArray = [];
+
+  // linking text
   playerLivesCount.textContent = playerLives;
   scoreCount.textContent = score;
 
@@ -41,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { imgSrc: "imgs/yayoi-kusama.png", name: "yayoi-kusama" },
     { imgSrc: "imgs/barbara-kruger.jpeg", name: "barbara-kruger" },
     { imgSrc: "imgs/hayv-kahraman.jpeg", name: "havy-kahraman" },
-    { imgSrc: "imgs/frida-kahlo", name: "frida-kahlo" },
+    { imgSrc: "imgs/frida-kahlo.png", name: "frida-kahlo" },
     { imgSrc: "imgs/tamara-de-lempicka.png", name: "tamara-de-lempicka" },
     { imgSrc: "imgs/zaha-hadid-2.jpeg", name: "zaha-hadid" },
     { imgSrc: "imgs/alma-thomas.jpeg", name: "alma-thomas" },
@@ -65,16 +58,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const cardGenerator = () => {
     const cardData = randomize();
     //console.log(cardData);
-    // Generate the HTML
 
+    // Generate the HTML
     cardData.forEach(item => {
       // console.log(item);
       const card = document.createElement("div");
       const face = document.createElement("img");
       const back = document.createElement("div");
-      card.classList = "card";
+      card.classList = "card lock";
       face.classList = "face";
       back.classList = "back";
+      // card.classList = "lock"
       // Attach the info to the cards
       face.src = item.imgSrc;
       card.setAttribute("name", item.name);
@@ -96,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const clickedCard = e.target;
     flippedCardsArray.push(clickedCard);
     console.log("flipped Cards Array", flippedCardsArray);
+
     clickedCard.classList.add("flipped");
     const flippedCards = document.querySelectorAll(".flipped");
     const toggleCard = document.querySelectorAll(".toggleCard");
@@ -128,16 +123,21 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log(playerLives);
           flippedCards.forEach(card => {
             card.classList.remove("flipped");
-            setTimeout(() => card.classList.remove("toggleCard"), 800);
+            setTimeout(() => {
+              card.classList.remove("toggleCard");
+            }, 800);
           });
           // card1.textContent = "";
           // card2.textContent = "";
+
           playerLives--;
           console.log("subtraction happened", playerLives);
           playerLivesCount.textContent = playerLives;
 
           console.log("right before restart", playerLives);
           if (playerLives === 0) {
+            scoreArray.push(score);
+            console.log("Score Array", scoreArray);
             setTimeout(() => {
               restart("🫠...try again");
             }, 800);
@@ -164,6 +164,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // Run a check to see if we won the game
     if (toggleCard.length === 16) {
+      scoreArray.push(score);
+      console.log("Score Array", scoreArray);
       restart("You're a champ 🏆");
     }
   }; //end of checkCards function

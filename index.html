@@ -13,15 +13,24 @@
   </head>
   <body>
     <div class="resultsDisplay">
-      <p>Player 1  > > > > ></p>
+      <div class="player" id="playerOne">
+      <p class="playerTitle">Player 1 > > > > ></p>
       <p>LIVES: <span class="statusBar" id="lives"></span></p>
       <p>SCORE: <span class="statusBar" id="score"></span></p>
-      <!--<p>Timer: <span class="statusBar" id="timer"></span></p>-->
+      </div>
+      <div class="player visibility" id="playerTwo">
+        <p class="playerTitle">Player 2 > > > > ></p>
+        <p>LIVES: <span class="statusBar" id="lives"></span></p>
+        <p>SCORE: <span class="statusBar" id="score"></span></p>
+        </div>
+      <div class = "timer" >
+        <p>Timer: <span class="statusBar" id="innerTimer"></span></p>
+      </div>
     </div>
 
 
     <div class="middle-container">
-    <section class="memory-game"></section>
+    <section class="gameBoard"></section>
 
     <div class="side">
       <h1>Can you name five women artists?</h1>

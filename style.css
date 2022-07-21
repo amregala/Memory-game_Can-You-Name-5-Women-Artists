@@ -43,16 +43,25 @@ h1 {
 }
 
 .resultsDisplay {
+  display: flex;
   margin-top: 35px;
   margin-bottom: 5px;
+  font-family: "Comfortaa", sans-serif;
   /* border: solid white 2px;*/
 }
 .resultsDisplay p {
   display: flex;
   display: inline;
   font-family: "Comfortaa", sans-serif;
-  padding: 15px;
+  padding: 11px;
   font-size: 14px;
+  color: #fff3c7;
+}
+#playerTwo.visibility {
+  /* visibility: hidden;*/
+}
+p.timer {
+  visibility: visible;
 }
 .cardTitle {
   margin-top: 20px;
@@ -82,7 +91,7 @@ h1 {
 /*----------------------------------*/
 /* STYLING FOR GRID/CARDS*/
 /*--------------------------------*/
-.memory-game {
+.gameBoard {
   width: 610px;
   height: 610px;
   margin-top: 15px;
@@ -126,6 +135,7 @@ h1 {
 
 .toggleCard {
   transform: rotateY(180deg);
+  pointer-events: none;
 }
 .face {
   transform: rotateY(-180deg);
