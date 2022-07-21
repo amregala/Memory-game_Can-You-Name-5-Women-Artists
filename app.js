@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const scoreCount = document.querySelector("#score");
   let playerLives = 6;
   let score = 0;
-  let lockboard = false;
   let scoreArray = [];
 
   // linking text
@@ -65,10 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = document.createElement("div");
       const face = document.createElement("img");
       const back = document.createElement("div");
-      card.classList = "card lock";
+      card.classList = "card";
       face.classList = "face";
       back.classList = "back";
-      // card.classList = "lock"
       // Attach the info to the cards
       face.src = item.imgSrc;
       card.setAttribute("name", item.name);
@@ -105,6 +103,10 @@ document.addEventListener("DOMContentLoaded", () => {
       card1.textContent = flippedCardsArray[0].getAttribute("name");
       card2.textContent = flippedCardsArray[1].getAttribute("name");
 
+      const lockCards = document.querySelectorAll(".card");
+      const gameBoard = document.querySelector(".gameBoard");
+      gameBoard.classList.toggle("lock");
+
       setTimeout(() => {
         if (
           flippedCards[0].getAttribute("name") ===
@@ -116,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
             card.classList.remove("flipped");
             card.style.pointerEvents = "none";
           });
+          gameBoard.classList.remove("lock");
           // card1.textContent = "";
           // card2.textContent = "";
         } else {
@@ -125,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
             card.classList.remove("flipped");
             setTimeout(() => {
               card.classList.remove("toggleCard");
+              gameBoard.classList.remove("lock");
             }, 800);
           });
           // card1.textContent = "";

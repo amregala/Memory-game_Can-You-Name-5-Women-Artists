@@ -137,6 +137,9 @@ p.timer {
   transform: rotateY(180deg);
   pointer-events: none;
 }
+.lock {
+  pointer-events: none;
+}
 .face {
   transform: rotateY(-180deg);
 }
