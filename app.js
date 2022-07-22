@@ -19,28 +19,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // GENERATING CARD DATA
   const getData = () => [
-    { imgSrc: "imgs/barbara-kruger.jpeg", name: "barbara-kruger" },
-    { imgSrc: "imgs/hayv-kahraman.jpeg", name: "havy-kahraman" },
-    { imgSrc: "imgs/frida-kahlo.png", name: "frida-kahlo" },
-    { imgSrc: "imgs/tamara-de-lempicka.png", name: "tamara-de-lempicka" },
-    { imgSrc: "imgs/zaha-hadid-2.jpeg", name: "zaha-hadid" },
-    { imgSrc: "imgs/alma-thomas.jpeg", name: "alma-thomas" },
+    { imgSrc: "imgs/barbara-kruger-crop.jpg", name: "barbara-kruger" },
+    { imgSrc: "imgs/hayv-kahraman-crop.jpg", name: "havy-kahraman" },
+    { imgSrc: "imgs/frida-kahlo-crop.jpg", name: "frida-kahlo" },
+    { imgSrc: "imgs/tamara-de-lempicka-crop.jpg", name: "tamara-de-lempicka" },
+    { imgSrc: "imgs/zaha-hadid-crop.jpg", name: "zaha-hadid" },
+    { imgSrc: "imgs/alma-thomas-crop.jpg", name: "alma-thomas" },
     {
-      imgSrc: "imgs/artemisia-gentileschi.webp",
+      imgSrc: "imgs/artemisia-gentileschi-crop.jpg",
       name: "artemisia-gentileschi",
     },
-    { imgSrc: "imgs/yayoi-kusama.png", name: "yayoi-kusama" },
-    { imgSrc: "imgs/barbara-kruger.jpeg", name: "barbara-kruger" },
-    { imgSrc: "imgs/hayv-kahraman.jpeg", name: "havy-kahraman" },
-    { imgSrc: "imgs/frida-kahlo.png", name: "frida-kahlo" },
-    { imgSrc: "imgs/tamara-de-lempicka.png", name: "tamara-de-lempicka" },
-    { imgSrc: "imgs/zaha-hadid-2.jpeg", name: "zaha-hadid" },
-    { imgSrc: "imgs/alma-thomas.jpeg", name: "alma-thomas" },
+    { imgSrc: "imgs/yayoi-kusama-crop.jpg", name: "yayoi-kusama" },
+    { imgSrc: "imgs/barbara-kruger-crop.jpg", name: "barbara-kruger" },
+    { imgSrc: "imgs/hayv-kahraman-crop.jpg", name: "havy-kahraman" },
+    { imgSrc: "imgs/frida-kahlo-crop.jpg", name: "frida-kahlo" },
+    { imgSrc: "imgs/tamara-de-lempicka-crop.jpg", name: "tamara-de-lempicka" },
+    { imgSrc: "imgs/zaha-hadid-crop.jpg", name: "zaha-hadid" },
+    { imgSrc: "imgs/alma-thomas-crop.jpg", name: "alma-thomas" },
     {
-      imgSrc: "imgs/artemisia-gentileschi.webp",
+      imgSrc: "imgs/artemisia-gentileschi-crop.jpg",
       name: "artemisia-gentileschi",
     },
-    { imgSrc: "imgs/yayoi-kusama.png", name: "yayoi-kusama" },
+    { imgSrc: "imgs/yayoi-kusama-crop.jpg", name: "yayoi-kusama" },
   ];
   console.log(getData());
   console.log(typeof getData());

@@ -12,17 +12,15 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <section class="fullGame">
 
       
 
-      
         <div class="intro">
           <h1 id="introTitle"> Can you name five women artists?</h1>
           <div id="playerRulesDiv">
           <h2 id="gameDescription">This game is a variation of concentration (also known as memory match). The objective of the game is to match all of the alike images.
             <br>
-<br>
+            <br>
             To start the all of the cards are shuffled and laid face down. Each player turn, 2 cards are flipped over. If the cards do not match, the flipped cards are both turned back over.  If the cards match, the cards stay flipped over and the player gets a set of points. 
           </h2>
         
@@ -34,13 +32,13 @@
          
             <button id="onePlayerBtn">One Player</button>
             <button id="twoPlayerBtn">Two Player</button>
-        </div>
+        </div> <!--END OF INTRO CONTAINER-->
 
         
     <div class="match-container">
+
     <div class="resultsDisplay">
       <div class="player" id="playerOne">
-      
       <p class="playerTitle">Player 1 > > > > ></p>
       <p>LIVES: <span class="statusBar" id="lives"></span></p>
       <p>SCORE: <span class="statusBar" id="score"></span></p>
@@ -53,10 +51,15 @@
       <div class = "timer" >
         <p>TIMER: <span class="statusBar" id="innerTimer"></span></p>
       </div>
-    </div>
+    </div> <!--END OF RESULTS DISPLAY CONTAINER-->
 
-    <section class="gameBoard"></section>
 
+    <!--START OF GAMEBOARD CONATINER WHICH HOLDS THE GAMEBOARD AND SIDE DISPLAY WHICH SHOWCASES NAMES OF ARTISTS-->
+
+<div id= "gameBoardContainer">
+    
+  <div class="gameBoard"></div><!--END OF GAMEBOARD-->
+  
     <div class="side">
       <h1 >Can you name five women artists?</h1>
       <div class="artist-name">
@@ -73,30 +76,10 @@
         today they remain dramatically underrepresented and undervalued in
         museums, galleries, and auction houses.
       </p>
+      </div> <!--END OF SIDE DIV CONTAINER-->
+  </div> <!--END OF GAMEBOARD CONTAINER-->
+  </div><!--END OF MATCH CONTAINER-->
 
-    </div>
-  </div>
-</section>
-
-
-
-    <!-- ORIGINAL Top Results Display Bar
-    <div class="resultsDisplay">
-      <div class="player" id="playerOne">
-      <p class="playerTitle">Player 1 > > > > ></p>
-      <p>LIVES: <span class="statusBar" id="lives"></span></p>
-      <p>SCORE: <span class="statusBar" id="score"></span></p>
-      </div>
-      <div class="player visibility" id="playerTwo">
-        <p class="playerTitle">Player 2 > > > > ></p>
-        <p>LIVES: <span class="statusBar" id="lives"></span></p>
-        <p>SCORE: <span class="statusBar" id="score"></span></p>
-        </div>
-      <div class = "timer" >
-        <p>TIMER: <span class="statusBar" id="innerTimer"></span></p>
-      </div>
-    </div>
-  -->
 
 </body>
 

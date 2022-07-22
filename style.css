@@ -13,12 +13,13 @@ body {
   background-color: rgb(0, 26, 128);
 }
 
-.fullGame {
+/* .fullGame {
   height: 100vh;
   background-color: black;
-}
+} */
 
 .intro {
+  position: absolute;
   background-color: black;
   width: 100%;
   height: 100vh;
@@ -30,8 +31,8 @@ body {
   font-family: "Poppins", sans-serif;
   color: black;
   transition: opacity 0.5s ease;
-  z-index: 1;
-  /* opacity: 0;*/
+  z-index: 2;
+  /* opacity: 0; */
 }
 /*
 .intro:hover {
@@ -87,6 +88,7 @@ body {
 div.fadeOut {
   opacity: 0;
   pointer-events: none;
+  z-index: -1;
 }
 
 div.fadeIn {
@@ -97,22 +99,31 @@ div.fadeIn {
 /*----------------------------------*/
 /* STYLING FOR ELEMENTS ON SIDEBAR*/
 /*--------------------------------*/
+
 .match-container {
   position: absolute;
-  display: flex;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  /* z-index: -1; */
+  height: 100vh;
+  width: 100%;
+  /* display: flex; */
+
+  /* display: inline; */
   flex-wrap: wrap;
-  background-color: green;
-  justify-content: center;
+  background-color: black;
+  /* justify-content: center; */
   align-items: center;
   align-content: center;
 }
 
 .resultsDisplay {
-  position: ;
+  position: relative;
   width: 100%;
-  height: 45px;
+
+  padding: 15px;
   /*margin-top: 5px;*/
-  padding: 5px;
   font-size: 14px;
   display: flex;
   color: #fff3c7;
@@ -139,15 +150,13 @@ p.timer {
 }
 
 .side {
-  margin-left: 15px;
-  width: 250px;
-  padding: 15px;
+  padding: 20px;
+  width: 35%;
   flex-wrap: wrap;
-
-  /*border: solid lightgreen 2px;*/
+  /* border: solid rgb(153, 144, 238) 5px; */
 }
 .side h1 {
-  width: 90%;
+  /* width: 45%; */
   font-family: "Poppins", sans-serif;
   font-size: 40px;
   line-height: 1;
@@ -178,30 +187,40 @@ p.timer {
 }
 .about {
   margin-top: 15px;
+
   font-family: "Comfortaa", sans-serif;
   color: #fff3c7;
   font-size: 12px;
   line-height: 1.6;
-  /*font-family: "Poppins", sans-serif;*/
 }
 
 /*----------------------------------*/
 /* STYLING FOR GRID/CARDS*/
 /*--------------------------------*/
+
+#gameBoardContainer {
+  margin-top: 45px;
+  display: flex;
+  flex-wrap: wrap;
+  display: inline-flex;
+  justify-content: center;
+  align-content: space-between;
+  align-items: center;
+  /* border: solid rgb(79, 176, 169) 4px; */
+}
+
 .gameBoard {
-  width: 610px;
-  height: 610px;
+  width: 550px;
+  height: 550px;
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-template-rows: auto auto auto auto;
   grid-gap: 20px;
   padding: 10px;
-  flex-wrap: wrap;
-
   perspective: 800px;
-  margin-top: 24px;
-  margin-bottom: 40px;
-
+  /* object-fit: contain; */
+  /* margin-top: 24px;
+  margin-bottom: 40px; */
   /*display: grid;
   margin-top: 20px;
   grid-template-columns: repeat(4, 8rem);
@@ -209,43 +228,34 @@ p.timer {
   grid-gap: 2rem;*/
 }
 
-/*
 .gameBoard:hover {
   background-color: #344966;
 }
-*/
+
 .card {
-  /*background-color: white;*/
+  /* background-color: white; */
   position: relative;
   transform-style: preserve-3d;
   transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
+  /* box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px; */
   border-radius: 15px;
 }
-/*
-.card:hover {
-  background-color: white;
-}
-*/
+
 .face,
 .back {
   width: 100%;
   height: 100%;
-  padding: 5px;
+  /* padding: 5px; */
   position: absolute;
   pointer-events: none;
   border-radius: 15px;
+  border: black 5px solid;
 }
 .back {
   background: #1c7ccc;
   backface-visibility: hidden;
 }
 
-/*
-.back:hover {
-  background-color: white;
-}
-*/
 .toggleCard {
   transform: rotateY(180deg);
   pointer-events: none;
@@ -256,36 +266,3 @@ p.timer {
 .face {
   transform: rotateY(-180deg);
 }
-
-/* memory card pseduo class which is the keyword , preceded by a colon - it is added  to the end of selectors to specify you want to style the selected elemtns, and only when they are in certain state
-.memory-card:active {
-  transform: scale(0.97);
-  transition: transform 0.2s;
-}
-
-.memory-card.flip {
-  transform: rotateY(180deg);
-}
-
-/*
-  Styling from other style
-  (width: 640px;
-  height: 640px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  perspective: 1000px;
-  
-}
-
-.memory-card {
-  width: calc(25% - 10px);
-  height: calc(33.333% - 10px);
-  margin: 5px;
-  position: relative;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  transform: scale(1);
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
-}
-*/
