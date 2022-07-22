@@ -10,12 +10,7 @@ font-family: 'Poppins', sans-serif;
 }
 
 body {
-  /*height: 100vh;*/
-  /*justify-content: center;
-  align-items: center;
-  flex-direction: column;*/
   background-color: rgb(0, 26, 128);
-  color: #fff3c7;
 }
 
 .fullGame {
@@ -23,39 +18,61 @@ body {
   background-color: black;
 }
 
-div.intro {
+.intro {
+  background-color: black;
+  width: 100%;
+  height: 100vh;
   display: flex;
-
-  width: 75%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   margin: auto;
   font-family: "Poppins", sans-serif;
   color: black;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+  /* opacity: 0;*/
 }
 /*
 .intro:hover {
   background-color: orange;
 }*/
 
-h1.intro {
-  font-size: 35px;
+#introTitle {
+  font-size: 45px;
   text-align: center;
   color: #fff3c7;
 }
 
-p.intro {
-  display: inline;
-  font-family: "Comfortaa", sans-serif;
-  font-size: 15px;
-  text-align: center;
-  width: 50%;
-  border: greenyellow solid 3px;
+#playerRulesDiv {
+  width: 80%;
   color: #fff3c7;
+  font-family: "Poppins", sans-serif;
 }
 
-button.intro {
+#gameDescription {
+  font-size: 16px;
+  font-weight: normal;
+  text-align: left;
+  line-height: 1.4;
+  color: #fff3c7;
+  padding-bottom: 25px;
+}
+
+.playerRulesSubtitle {
+  color: #fff3c7;
+  font: 18px;
+  background: #1c7ccc;
+  padding: 5px;
+}
+
+.playerRules {
+  color: #fff3c7;
+  padding-bottom: 25px;
+}
+
+#onePlayerBtn,
+#twoPlayerBtn {
   height: 40px;
   width: 180px;
   font-size: 15px;
@@ -80,21 +97,21 @@ div.fadeIn {
 /*----------------------------------*/
 /* STYLING FOR ELEMENTS ON SIDEBAR*/
 /*--------------------------------*/
-.middle-container {
+.match-container {
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  background-color: black;
-
+  background-color: green;
   justify-content: center;
   align-items: center;
-  display: inline;
   align-content: center;
 }
 
 .resultsDisplay {
+  position: ;
   width: 100%;
   height: 45px;
+  /*margin-top: 5px;*/
   padding: 5px;
   font-size: 14px;
   display: flex;
@@ -205,7 +222,11 @@ p.timer {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
   border-radius: 15px;
 }
-
+/*
+.card:hover {
+  background-color: white;
+}
+*/
 .face,
 .back {
   width: 100%;
@@ -220,6 +241,11 @@ p.timer {
   backface-visibility: hidden;
 }
 
+/*
+.back:hover {
+  background-color: white;
+}
+*/
 .toggleCard {
   transform: rotateY(180deg);
   pointer-events: none;

@@ -56,6 +56,18 @@ document.addEventListener("DOMContentLoaded", () => {
   //CARD GENERATOR FUNCTION
   //============================
   const cardGenerator = () => {
+    const startGame = () => {
+      const introBtn = document.querySelector(".intro button");
+      const introScreen = document.querySelector(".intro");
+      const match = document.querySelector(".match-container");
+
+      introBtn.addEventListener("click", () => {
+        console.log("fadeOut happened");
+        introScreen.classList.add("fadeOut");
+      });
+      // calling inner functions
+    };
+    startGame();
     const cardData = randomize();
     //console.log(cardData);
 
