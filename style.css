@@ -11,62 +11,140 @@ font-family: 'Poppins', sans-serif;
 
 body {
   /*height: 100vh;*/
-  /*display: flex;*/
   /*justify-content: center;
   align-items: center;
   flex-direction: column;*/
-  background-color: black;
+  background-color: rgb(0, 26, 128);
   color: #fff3c7;
-  margin-left: 2%;
 }
 
-.middle-container {
-  display: flex;
+.fullGame {
+  height: 100vh;
+  background-color: black;
 }
+
+div.intro {
+  display: flex;
+
+  width: 75%;
+  margin: auto;
+  font-family: "Poppins", sans-serif;
+  color: black;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+/*
+.intro:hover {
+  background-color: orange;
+}*/
+
+h1.intro {
+  font-size: 35px;
+  text-align: center;
+  color: #fff3c7;
+}
+
+p.intro {
+  display: inline;
+  font-family: "Comfortaa", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  width: 50%;
+  border: greenyellow solid 3px;
+  color: #fff3c7;
+}
+
+button.intro {
+  height: 40px;
+  width: 180px;
+  font-size: 15px;
+  background: #fff3c7;
+  border-radius: 20px;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+div.fadeOut {
+  opacity: 0;
+  pointer-events: none;
+}
+
+div.fadeIn {
+  opacity: 1;
+  pointer-events: all;
+}
+
 /*----------------------------------*/
 /* STYLING FOR ELEMENTS ON SIDEBAR*/
 /*--------------------------------*/
-.side {
-  margin-left: 15px;
-  width: 250px;
-  padding: 20px;
+.middle-container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  /*border: solid red 2px;*/
-}
-h1 {
-  width: 90%;
-  font-family: "Open Sans", sans-serif;
-  font-size: 40px;
-  line-height: 1;
-  /* border: solid yellow 2px;*/
+  background-color: black;
+
+  justify-content: center;
+  align-items: center;
+  display: inline;
+  align-content: center;
 }
 
 .resultsDisplay {
-  display: flex;
-  margin-top: 35px;
-  margin-bottom: 5px;
-  font-family: "Comfortaa", sans-serif;
-  /* border: solid white 2px;*/
-}
-.resultsDisplay p {
-  display: flex;
-  display: inline;
-  font-family: "Comfortaa", sans-serif;
-  padding: 11px;
+  width: 100%;
+  height: 45px;
+  padding: 5px;
   font-size: 14px;
+  display: flex;
   color: #fff3c7;
+  font-family: "Comfortaa", sans-serif;
+  background-color: purple;
 }
+
+#playerOne p {
+  /*background-color: rgb(57, 126, 166);*/
+  display: inline-block;
+  padding-right: 30px;
+}
+#playerTwo p {
+  /*background-color: rgb(57, 166, 106);*/
+  display: inline-block;
+  padding-right: 30px;
+}
+
 #playerTwo.visibility {
   /* visibility: hidden;*/
 }
 p.timer {
   visibility: visible;
 }
+
+.side {
+  margin-left: 15px;
+  width: 250px;
+  padding: 15px;
+  flex-wrap: wrap;
+
+  /*border: solid lightgreen 2px;*/
+}
+.side h1 {
+  width: 90%;
+  font-family: "Poppins", sans-serif;
+  font-size: 40px;
+  line-height: 1;
+  color: #fff3c7;
+  /* border: solid yellow 2px;
+  font-family: "Open Sans", sans-serif;*/
+}
+
 .cardTitle {
   margin-top: 20px;
   font-family: "Poppins", sans-serif;
-  color: white;
+  color: #fff3c7;
+  font-size: 12px;
+  font-family: "Comfortaa", sans-serif;
 }
 .artist-bar {
   padding-top: 10px;
@@ -82,10 +160,12 @@ p.timer {
   align-self: center;
 }
 .about {
-  margin-top: 20px;
-  font-family: "Poppins", sans-serif;
+  margin-top: 15px;
+  font-family: "Comfortaa", sans-serif;
+  color: #fff3c7;
   font-size: 12px;
   line-height: 1.6;
+  /*font-family: "Poppins", sans-serif;*/
 }
 
 /*----------------------------------*/
@@ -94,24 +174,31 @@ p.timer {
 .gameBoard {
   width: 610px;
   height: 610px;
-  margin-top: 15px;
-  /*grid-template-columns: fit-content(50%);
-  grid-template-rows: fit-content(50%);
-  */
-  /*width: 45%;*/
-  display: flex;
   display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto auto;
+  grid-gap: 20px;
+  padding: 10px;
+  flex-wrap: wrap;
+
+  perspective: 800px;
+  margin-top: 24px;
+  margin-bottom: 40px;
+
+  /*display: grid;
+  margin-top: 20px;
   grid-template-columns: repeat(4, 8rem);
   grid-template-rows: repeat(4, 8rem);
-  grid-gap: 2rem;
-  perspective: 800px;
-  margin-bottom: 50px;
-  /*background-color: #344966;
-  border: solid white 2px;*/
+  grid-gap: 2rem;*/
 }
 
+/*
+.gameBoard:hover {
+  background-color: #344966;
+}
+*/
 .card {
-  background-color: white;
+  /*background-color: white;*/
   position: relative;
   transform-style: preserve-3d;
   transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);

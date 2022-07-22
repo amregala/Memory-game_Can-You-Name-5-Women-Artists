@@ -2,7 +2,7 @@ console.log("Memory Card Game - Can You Name Five Women Artist?");
 
 // adding as a safeguard but not really needed as elements are being appended from JS
 document.addEventListener("DOMContentLoaded", () => {
-  //grab a couple of things
+  // ELEMENT SELECTORS
   const section = document.querySelector("section");
   const card1 = document.querySelector("#artist1");
   const card2 = document.querySelector("#artist2");
@@ -13,12 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let playerLives = 6;
   let score = 0;
   let scoreArray = [];
-
   // linking text
   playerLivesCount.textContent = playerLives;
   scoreCount.textContent = score;
 
-  // generate the data
+  // GENERATING CARD DATA
   const getData = () => [
     { imgSrc: "imgs/barbara-kruger.jpeg", name: "barbara-kruger" },
     { imgSrc: "imgs/hayv-kahraman.jpeg", name: "havy-kahraman" },
@@ -53,7 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
     return cardData;
   };
 
-  // Card Generator Function
+  //============================
+  //CARD GENERATOR FUNCTION
+  //============================
   const cardGenerator = () => {
     const cardData = randomize();
     //console.log(cardData);
@@ -72,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
       card.setAttribute("name", item.name);
 
       // Attach the cards to the section
-      section.appendChild(card);
+      gameBoard.appendChild(card);
       card.appendChild(face);
       card.appendChild(back);
 
@@ -81,9 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
         checkCards(e);
       });
     });
-  }; // CardGenerator function ends
+  }; // END OF CARD GENERATOR FUNCTION
 
-  // Check Cards
+  //============================
+  // CHECK CARDS FUNCTION
+  //============================
   const checkCards = e => {
     const clickedCard = e.target;
     flippedCardsArray.push(clickedCard);
@@ -122,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // card1.textContent = "";
           // card2.textContent = "";
         } else {
-          console.log("wrong");
+          console.log("not a match");
           console.log(playerLives);
           flippedCards.forEach(card => {
             card.classList.remove("flipped");
@@ -164,7 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
       score += 10;
       console.log("score function scoreKeeper", score);
       return (scoreCount.textContent = score);
-      //   return;
     }
     // Run a check to see if we won the game
     if (toggleCard.length === 16) {
@@ -172,9 +174,11 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Score Array", scoreArray);
       restart("You're a champ 🏆");
     }
-  }; //end of checkCards function
+  }; //END OF CHECK CARDS FUNCTION
 
-  // Restart
+  //============================
+  //RESTART FUNCTION
+  //============================
   const restart = text => {
     let cardData = randomize();
     let faces = document.querySelectorAll(".face");
@@ -196,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
     score = 0;
     scoreCount.textContent = score;
     setTimeout(() => window.alert(text), 850);
-  };
+  }; // END OF RESTART FUNCTION
 
   cardGenerator();
 }); // this belongs to the DOM CONTENT LOADED AT VERY TOP
