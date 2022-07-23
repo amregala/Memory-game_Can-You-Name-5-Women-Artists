@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const card2 = document.querySelector("#artist2");
   const gameBoard = document.querySelector(".gameBoard");
   let flippedCardsArray = [];
-  const playerLivesCount = document.querySelector("#lives");
+  const playerLivesCount = document.querySelector(".lives");
   const scoreCount = document.querySelector("#score");
   let playerLives = 6;
   let score = 0;
@@ -19,28 +19,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // GENERATING CARD DATA
   const getData = () => [
-    { imgSrc: "imgs/barbara-kruger-crop.jpg", name: "barbara-kruger" },
-    { imgSrc: "imgs/hayv-kahraman-crop.jpg", name: "havy-kahraman" },
-    { imgSrc: "imgs/frida-kahlo-crop.jpg", name: "frida-kahlo" },
-    { imgSrc: "imgs/tamara-de-lempicka-crop.jpg", name: "tamara-de-lempicka" },
-    { imgSrc: "imgs/zaha-hadid-crop.jpg", name: "zaha-hadid" },
-    { imgSrc: "imgs/alma-thomas-crop.jpg", name: "alma-thomas" },
+    { imgSrc: "imgs/barbara-kruger-crop.jpg", name: "Barbara Kruger" },
+    { imgSrc: "imgs/hayv-kahraman-crop.jpg", name: "Havy Kahraman" },
+    { imgSrc: "imgs/frida-kahlo-crop.jpg", name: "Frida Kahlo" },
+    { imgSrc: "imgs/tamara-de-lempicka-crop.jpg", name: "Tamara de Lempicka" },
+    { imgSrc: "imgs/zaha-hadid-crop.jpg", name: "Zaha Hadid" },
+    { imgSrc: "imgs/alma-thomas-crop.jpg", name: "Alma Thomas" },
     {
       imgSrc: "imgs/artemisia-gentileschi-crop.jpg",
-      name: "artemisia-gentileschi",
+      name: "Artemisia Gentileschi",
     },
-    { imgSrc: "imgs/yayoi-kusama-crop.jpg", name: "yayoi-kusama" },
-    { imgSrc: "imgs/barbara-kruger-crop.jpg", name: "barbara-kruger" },
-    { imgSrc: "imgs/hayv-kahraman-crop.jpg", name: "havy-kahraman" },
-    { imgSrc: "imgs/frida-kahlo-crop.jpg", name: "frida-kahlo" },
-    { imgSrc: "imgs/tamara-de-lempicka-crop.jpg", name: "tamara-de-lempicka" },
-    { imgSrc: "imgs/zaha-hadid-crop.jpg", name: "zaha-hadid" },
-    { imgSrc: "imgs/alma-thomas-crop.jpg", name: "alma-thomas" },
+    { imgSrc: "imgs/yayoi-kusama-crop.jpg", name: "Yayoi Kusama" },
+    { imgSrc: "imgs/barbara-kruger-crop.jpg", name: "Barbara Kruger" },
+    { imgSrc: "imgs/hayv-kahraman-crop.jpg", name: "Havy Kahraman" },
+    { imgSrc: "imgs/frida-kahlo-crop.jpg", name: "Frida Kahlo" },
+    { imgSrc: "imgs/tamara-de-lempicka-crop.jpg", name: "Tamara de Lempicka" },
+    { imgSrc: "imgs/zaha-hadid-crop.jpg", name: "Zaha Hadid" },
+    { imgSrc: "imgs/alma-thomas-crop.jpg", name: "Alma Thomas" },
     {
       imgSrc: "imgs/artemisia-gentileschi-crop.jpg",
-      name: "artemisia-gentileschi",
+      name: "Artemisia Gentileschi",
     },
-    { imgSrc: "imgs/yayoi-kusama-crop.jpg", name: "yayoi-kusama" },
+    { imgSrc: "imgs/yayoi-kusama-crop.jpg", name: "Yayoi Kusama" },
   ];
   console.log(getData());
   console.log(typeof getData());
@@ -57,17 +57,34 @@ document.addEventListener("DOMContentLoaded", () => {
   //============================
   const cardGenerator = () => {
     const startGame = () => {
-      const introBtn = document.querySelector(".intro button");
+      const onePlayer = document.querySelector("#playerOneBtn");
+      const twoPlayer = document.querySelector("#playerTwoBtn");
+      const p2stats = document.querySelector("#playerTwo");
       const introScreen = document.querySelector(".intro");
       const match = document.querySelector(".match-container");
 
-      introBtn.addEventListener("click", () => {
-        console.log("fadeOut happened");
-        introScreen.classList.add("fadeOut");
+      onePlayer.addEventListener("click", () => {
+        setTimeout(() => {
+          console.log("fadeOut happened");
+          introScreen.classList.add("fadeOut");
+          p2stats.classList.add("p2FadeOut");
+        }, 500);
       });
-      // calling inner functions
+
+      twoPlayer.addEventListener("click", () => {
+        setTimeout(() => {
+          console.log("fadeOut happened, clicked on 2 player");
+          introScreen.classList.add("fadeOut");
+          const p2Lives = document.querySelector("#p2Lives");
+          const p2Score = document.querySelector("#p2Score");
+          p2Lives.textContent = playerLives;
+          p2Score.textContent = score;
+        }, 500);
+      });
     };
+    // calling inner function startGame
     startGame();
+
     const cardData = randomize();
     //console.log(cardData);
 
@@ -110,9 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("clicked card", clickedCard);
     console.log("toggle on", toggleCard);
 
-    // card1.textContent = flippedCards[0].getAttribute("name");
-    // card2.textContent = flippedCards[1].getAttribute("name");
-
     //Logic
     if (flippedCards.length === 2) {
       card1.textContent = flippedCardsArray[0].getAttribute("name");
@@ -138,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // card2.textContent = "";
         } else {
           console.log("not a match");
-          console.log(playerLives);
+          console.log("not a match - player lives", playerLives);
           flippedCards.forEach(card => {
             card.classList.remove("flipped");
             setTimeout(() => {
@@ -166,9 +180,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // if (toggleCard.length === 16) {
         //   restart("You're a champ 🏆");
         // }
-
+        //===========THIS FUNCTIO IS CLEARING OUT THE FLIPPED CARDS ARRAY=============
         setTimeout(() => {
-          console.log("clearing artist content");
+          console.log("clearing flipped cards array");
           card1.textContent = "";
           card2.textContent = "";
           flippedCardsArray.length = 0;
@@ -192,18 +206,21 @@ document.addEventListener("DOMContentLoaded", () => {
   //RESTART FUNCTION
   //============================
   const restart = text => {
+    console.log("Restart Happening");
     let cardData = randomize();
     let faces = document.querySelectorAll(".face");
     let cards = document.querySelectorAll(".card");
-    section.style.pointerEvents = "none";
+    gameBoard.classList.toggle("lock");
+
     cardData.forEach((item, index) => {
       cards[index].classList.remove("toggleCard");
+      //cards.classList.toggle("lock");
       //Randomize
       setTimeout(() => {
         cards[index].style.pointerEvents = "all";
         faces[index].src = item.imgSrc;
         cards[index].setAttribute("name", item.name);
-        section.style.pointerEvents = "all";
+        gameBoard.classList.remove("lock");
       }, 1000);
     });
 
@@ -216,3 +233,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cardGenerator();
 }); // this belongs to the DOM CONTENT LOADED AT VERY TOP
+
+//section.style.pointerEvents = none;
