@@ -7,15 +7,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const card1 = document.querySelector("#artist1");
   const card2 = document.querySelector("#artist2");
   const gameBoard = document.querySelector(".gameBoard");
+
+  const timerCount = document.querySelector("#innerTimer");
   let flippedCardsArray = [];
   const playerLivesCount = document.querySelector(".lives");
   const scoreCount = document.querySelector("#score");
   let playerLives = 6;
   let score = 0;
   let scoreArray = [];
+  let timer = 10;
   // linking text
   playerLivesCount.textContent = playerLives;
   scoreCount.textContent = score;
+  timerCount.textContent = timer;
 
   // GENERATING CARD DATA
   const getData = () => [
@@ -120,12 +124,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const clickedCard = e.target;
     flippedCardsArray.push(clickedCard);
     console.log("flipped Cards Array", flippedCardsArray);
-
     clickedCard.classList.add("flipped");
     const flippedCards = document.querySelectorAll(".flipped");
     const toggleCard = document.querySelectorAll(".toggleCard");
     console.log("clicked card", clickedCard);
     console.log("toggle on", toggleCard);
+
+    setInterval(() => {
+      timer--;
+      timerCount.textContent = timer;
+      console.log("timer");
+      return timer;
+    }, 60000);
 
     //Logic
     if (flippedCards.length === 2) {
