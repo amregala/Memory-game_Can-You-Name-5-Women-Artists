@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // linking text
   playerLivesCount.textContent = playerLives;
   scoreCount.textContent = score;
-  timerCount.textContent = timer;
+  // timerCount.textContent = timer;
 
   // GENERATING CARD DATA
   const getData = () => [
@@ -130,13 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("clicked card", clickedCard);
     console.log("toggle on", toggleCard);
 
-    setInterval(() => {
-      timer++;
-      timerCount.textContent = timer;
-      console.log("timer");
-      return timer;
-    }, 1000);
-
+    // timer.classList.add("lock");
     //Logic
     if (flippedCards.length === 2) {
       card1.textContent = flippedCardsArray[0].getAttribute("name");
@@ -168,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
               card.classList.remove("toggleCard");
               gameBoard.classList.remove("lock");
-            }, 800);
+            }, 400);
           });
           // card1.textContent = "";
           // card2.textContent = "";
@@ -178,12 +172,12 @@ document.addEventListener("DOMContentLoaded", () => {
           playerLivesCount.textContent = playerLives;
 
           console.log("right before restart", playerLives);
-          if (playerLives === 0) {
+          if (playerLives === 0 || timerCount === 1800) {
             scoreArray.push(score);
             console.log("Score Array", scoreArray);
             setTimeout(() => {
               restart("🫠...try again");
-            }, 800);
+            }, 600);
           }
         }
         // ! should this go here? Or further below test
