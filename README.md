@@ -1,4 +1,4 @@
-# proj1-memory-game-can-you-name
+# Can you name 5 women artists?
  
 ## Project Choice 
 • Can You Name five women artists? 
