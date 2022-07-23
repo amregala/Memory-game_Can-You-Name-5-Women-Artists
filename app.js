@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let playerLives = 6;
   let score = 0;
   let scoreArray = [];
-  let timer = 10;
+  let timer = 0;
   // linking text
   playerLivesCount.textContent = playerLives;
   scoreCount.textContent = score;
@@ -131,11 +131,11 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("toggle on", toggleCard);
 
     setInterval(() => {
-      timer--;
+      timer++;
       timerCount.textContent = timer;
       console.log("timer");
       return timer;
-    }, 60000);
+    }, 1000);
 
     //Logic
     if (flippedCards.length === 2) {
