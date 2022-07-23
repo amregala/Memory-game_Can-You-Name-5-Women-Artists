@@ -11,4 +11,13 @@ The purpose of this game is to help people learn the names of a few women artist
 
 
 ## Wire Frames
+### Mock-up v1
 ![Can You Name 5](https://media.git.generalassemb.ly/user/43399/files/ba1ae369-70e8-40f6-844b-488cbcdd7493)
+
+
+### Mock-up v2
+![Mock-Up-v2](https://user-images.githubusercontent.com/20043034/180610809-3b505bbf-bd6d-491a-9481-d2a97dd0b9e6.png)
+
+
+### Mock-up FINAL
+![MockUp-vFinal](https://user-images.githubusercontent.com/20043034/180610819-ca96aebe-5255-4451-afaf-dc4444948c48.png)
