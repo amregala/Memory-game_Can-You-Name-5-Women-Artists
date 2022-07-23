@@ -1,7 +1,13 @@
 # Can you name 5 women artists?
  
 ## Project Description
-My game app for this project is a Women Artist Matching game. I currently work at the national museum of women in the arts and since 2016 the museum has been asking the question can you name five women artists? Surprisingly (or maybe not) people can barely name one. Inspired by that campaign I decided to make a matching game based on women artists to help people learn the names of more women artist. 
+For this project I created a game based on concentration (also known as memory) called - Can you name 5 women artists?
+
+The game was inspired by a campaign from the National Museum of Women in the Arts (NMWA) which asked this question.
+
+Since 2016, (NMWA) has been asking this question on social media each March during Women's History Month. Using the hastag #5WomenArtists, the campaign calls attention to the fact that women have not been treated equally in the art world, and today they remain dramatically underrepresented and undervalued in museums, galleries, and auction houses.
+
+The purpose of this game is to help people learn the names of a few women artists in a fun format. 
 
 
 ## Wire Frames
