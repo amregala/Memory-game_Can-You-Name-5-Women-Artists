@@ -1,27 +1,35 @@
 console.log("Memory Card Game - Can You Name Five Women Artist?");
 
-// adding as a safeguard but not really needed as elements are being appended from JS
 document.addEventListener("DOMContentLoaded", () => {
   // ELEMENT SELECTORS
   const section = document.querySelector("section");
   const card1 = document.querySelector("#artist1");
   const card2 = document.querySelector("#artist2");
   const gameBoard = document.querySelector(".gameBoard");
-
   const timerCount = document.querySelector("#innerTimer");
   let flippedCardsArray = [];
   const playerLivesCount = document.querySelector(".lives");
-  const scoreCount = document.querySelector("#score");
+  let scoreCount = document.querySelector("#score");
   let playerLives = 6;
   let score = 0;
+  let playerLives2 = 6;
+  let score2 = 0;
+  const p2Lives = document.querySelector("#p2Lives");
+  const p2Score = document.querySelector("#p2Score");
   let scoreArray = [];
-  let timer = 0;
-  // linking text
+  let twoPlayerGame = false;
+  let onePlayerGame = true;
+  // LINKED ELEMENTS
   playerLivesCount.textContent = playerLives;
-  scoreCount.textContent = score;
-  // timerCount.textContent = timer;
+  scoreCount.textContent = `SCORE: ${score}`;
 
+  // ! Link below to 2 player round?
+  // playerLivesCount.textContent = playerLives2;
+  // scoreCount.textContent = `SCORE: ${score2}`;
+
+  //============================
   // GENERATING CARD DATA
+  //============================
   const getData = () => [
     { imgSrc: "imgs/barbara-kruger-crop.jpg", name: "Barbara Kruger" },
     { imgSrc: "imgs/hayv-kahraman-crop.jpg", name: "Havy Kahraman" },
@@ -45,52 +53,58 @@ document.addEventListener("DOMContentLoaded", () => {
       name: "Artemisia Gentileschi",
     },
     { imgSrc: "imgs/yayoi-kusama-crop.jpg", name: "Yayoi Kusama" },
-  ];
-  console.log(getData());
-  console.log(typeof getData());
+  ]; // END OF GETDATA
+  // console.log(getData());
+  // console.log(typeof getData());
 
-  // randomize
+  //============================
+  // RANDOMIZE FUNCTION
+  //============================
   const randomize = () => {
     const cardData = getData();
     cardData.sort(() => Math.random() - 0.5);
     return cardData;
+  }; // END OF RANDOMIZE FUNCTION
+
+  //============================
+  // START GAME FUNCTION
+  //============================
+  const startGame = () => {
+    const onePlayer = document.querySelector("#playerOneBtn");
+    const twoPlayer = document.querySelector("#playerTwoBtn");
+    const p2stats = document.querySelector("#playerTwo");
+    const introScreen = document.querySelector(".intro");
+    const match = document.querySelector(".match-container");
+
+    onePlayer.addEventListener("click", () => {
+      setTimeout(() => {
+        console.log("fadeOut happened");
+        introScreen.classList.add("fadeOut");
+        p2stats.classList.add("p2FadeOut"); //fades out the player 2 stats since p1 was selected
+      }, 500);
+    });
+
+    twoPlayer.addEventListener("click", () => {
+      setTimeout(() => {
+        console.log("fadeOut happened, clicked on 2 player");
+        onePlayerGame = false;
+        twoPlayerGame = true;
+        console.log("1p", onePlayerGame);
+        console.log("2p", twoPlayerGame);
+        introScreen.classList.add("fadeOut");
+        const p2Lives = document.querySelector("#p2Lives");
+        const p2Score = document.querySelector("#p2Score");
+        p2Lives.textContent = playerLives;
+        p2Score.textContent = score;
+      }, 500);
+    });
   };
 
   //============================
   //CARD GENERATOR FUNCTION
   //============================
   const cardGenerator = () => {
-    const startGame = () => {
-      const onePlayer = document.querySelector("#playerOneBtn");
-      const twoPlayer = document.querySelector("#playerTwoBtn");
-      const p2stats = document.querySelector("#playerTwo");
-      const introScreen = document.querySelector(".intro");
-      const match = document.querySelector(".match-container");
-
-      onePlayer.addEventListener("click", () => {
-        setTimeout(() => {
-          console.log("fadeOut happened");
-          introScreen.classList.add("fadeOut");
-          p2stats.classList.add("p2FadeOut");
-        }, 500);
-      });
-
-      twoPlayer.addEventListener("click", () => {
-        setTimeout(() => {
-          console.log("fadeOut happened, clicked on 2 player");
-          introScreen.classList.add("fadeOut");
-          const p2Lives = document.querySelector("#p2Lives");
-          const p2Score = document.querySelector("#p2Score");
-          p2Lives.textContent = playerLives;
-          p2Score.textContent = score;
-        }, 500);
-      });
-    };
-    // calling inner function startGame
-    startGame();
-
     const cardData = randomize();
-    //console.log(cardData);
 
     // Generate the HTML
     cardData.forEach(item => {
@@ -130,12 +144,10 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("clicked card", clickedCard);
     console.log("toggle on", toggleCard);
 
-    // timer.classList.add("lock");
     //Logic
     if (flippedCards.length === 2) {
       card1.textContent = flippedCardsArray[0].getAttribute("name");
       card2.textContent = flippedCardsArray[1].getAttribute("name");
-
       const lockCards = document.querySelectorAll(".card");
       const gameBoard = document.querySelector(".gameBoard");
       gameBoard.classList.toggle("lock");
@@ -152,8 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
             card.style.pointerEvents = "none";
           });
           gameBoard.classList.remove("lock");
-          // card1.textContent = "";
-          // card2.textContent = "";
         } else {
           console.log("not a match");
           console.log("not a match - player lives", playerLives);
@@ -164,46 +174,83 @@ document.addEventListener("DOMContentLoaded", () => {
               gameBoard.classList.remove("lock");
             }, 400);
           });
-          // card1.textContent = "";
-          // card2.textContent = "";
-
           playerLives--;
           console.log("subtraction happened", playerLives);
           playerLivesCount.textContent = playerLives;
 
           console.log("right before restart", playerLives);
-          if (playerLives === 0 || timerCount === 1800) {
+          if (playerLives === 0) {
             scoreArray.push(score);
             console.log("Score Array", scoreArray);
-            setTimeout(() => {
-              restart("🫠...try again");
-            }, 600);
+            console.log("two player?", twoPlayerGame);
+            if (twoPlayerGame === true) {
+              setTimeout(() => {
+                restart("🫠 You are out of lives...Player two's turn!");
+                console.log("checking score array", scoreArray);
+                scoreCount.textContent = `FINAL: ${scoreArray[0]}`;
+              }, 600);
+              // ! RUN ANOTHER 2 PLAYER FUNCTION IN HERE?? LINKED AS INNER FUNCTION
+            } else {
+              setTimeout(() => {
+                restart("🫠 You are out of lives...try again");
+              }, 600);
+            }
           }
         }
-        // ! should this go here? Or further below test
-        // if (toggleCard.length === 16) {
-        //   restart("You're a champ 🏆");
-        // }
-        //===========THIS FUNCTIO IS CLEARING OUT THE FLIPPED CARDS ARRAY=============
+
+        //===========THIS FUNCTION IS CLEARING OUT THE FLIPPED CARDS ARRAY=============
         setTimeout(() => {
           console.log("clearing flipped cards array");
           card1.textContent = "";
           card2.textContent = "";
           flippedCardsArray.length = 0;
         }, 750);
-      }, 2700);
+      }, 2000);
     }
-    function scoreKeeper() {
-      score += 10;
-      console.log("score function scoreKeeper", score);
-      return (scoreCount.textContent = score);
-    }
-    // Run a check to see if we won the game
+
+    // console.log("right before restart", playerLives);
+    // if (playerLives === 0) {
+    //   scoreArray.push(score);
+    //   console.log("Score Array", scoreArray);
+    //   console.log("two player?", twoPlayerGame);
+    //   if (twoPlayerGame === true) {
+    //     setTimeout(() => {
+    //       restart("🫠 You are out of lives...Player two's turn!");
+    //       console.log("checking score array", scoreArray);
+    //       scoreCount.textContent = `FINAL: ${scoreArray[0]}`;
+    //     }, 600);
+    //     // ! RUN ANOTHER 2 PLAYER FUNCTION IN HERE?? LINKED AS INNER FUNCTION
+    //   } else {
+    //     setTimeout(() => {
+    //       restart("🫠 You are out of lives...try again");
+    //     }, 600);
+    //   }
+    // }
+
+    // CONDITIONAL CHECKING TO SEE IF GAME WAS WON
     if (toggleCard.length === 16) {
       scoreArray.push(score);
       console.log("Score Array", scoreArray);
       restart("You're a champ 🏆");
     }
+
+    // ! THIS WAS MOVED FURTHER UP IN CODE - LEAVING COMMENTED OUT FOR THE MOMENT
+    //     //===========THIS FUNCTION IS CLEARING OUT THE FLIPPED CARDS ARRAY=============
+    //     setTimeout(() => {
+    //       console.log("clearing flipped cards array");
+    //       card1.textContent = "";
+    //       card2.textContent = "";
+    //       flippedCardsArray.length = 0;
+    //     }, 750);
+    //   }, 2700);
+    // }
+
+    //====INNER FUNCTION >> KEEPS TRACK OF SCORE
+    function scoreKeeper() {
+      score += 10;
+      console.log("score function scoreKeeper", score);
+      return (scoreCount.textContent = `SCORE: ${score}`);
+    } // END OF SCOREKEEPER FUNCTION
   }; //END OF CHECK CARDS FUNCTION
 
   //============================
@@ -231,10 +278,12 @@ document.addEventListener("DOMContentLoaded", () => {
     playerLives = 6;
     playerLivesCount.textContent = playerLives;
     score = 0;
-    scoreCount.textContent = score;
+    scoreCount.textContent = `SCORE: ${score}`;
     setTimeout(() => window.alert(text), 850);
   }; // END OF RESTART FUNCTION
 
+  // INVOKING MAIN GAME FUNCTION
+  startGame();
   cardGenerator();
 }); // this belongs to the DOM CONTENT LOADED AT VERY TOP
 
