@@ -9,11 +9,12 @@ The game is a variation of the card game concentration (also known as memory) wh
 
 ## Wire Frames
 ### Mock-up v1
-![Can You Name 5](https://media.git.generalassemb.ly/user/43399/files/ba1ae369-70e8-40f6-844b-488cbcdd7493)
+![Mock-Up-v1](https://user-images.githubusercontent.com/20043034/180639112-f28e50bc-af8a-4865-a3e3-ab503cbd3ee6.png)
 
 
 ### Mock-up v2
-![Mock-Up-v2](https://user-images.githubusercontent.com/20043034/180610809-3b505bbf-bd6d-491a-9481-d2a97dd0b9e6.png)
+![Mock-Up-v2](https://user-images.githubusercontent.com/20043034/180639212-78dcb9c2-88ad-411c-bf4c-7dbd94e4e5fb.png)
+
 
 
 ### Mock-up FINAL
