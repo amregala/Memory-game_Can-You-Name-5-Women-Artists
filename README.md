@@ -1,14 +1,11 @@
 # Can you name 5 women artists?
  
 ## Project Description
-For this project I created a game based on concentration (also known as memory) called - Can you name 5 women artists?
+The concept for this game is inspired by a social media campaign from the National Museum of Women in the Arts (NMWA), which aims to call attention to the inequities present in the art world in which - women remain dramatically underrepresented and undervalued in museums, galleries and auctions houses - by asking, ***Can you name five women artists?***
 
-The game was inspired by a campaign from the National Museum of Women in the Arts (NMWA) which asked this question.
+More often than not people can barely name one women artist and with that question in mind this game was created to help people learn the names of more women artists. 
 
-Since 2016, (NMWA) has been asking this question on social media each March during Women's History Month. Using the hastag #5WomenArtists, the campaign calls attention to the fact that women have not been treated equally in the art world, and today they remain dramatically underrepresented and undervalued in museums, galleries, and auction houses.
-
-The purpose of this game is to help people learn the names of a few women artists in a fun format. 
-
+The game is a variation of the card game concentration (also known as memory) where a set number of cards are shuffled and laid face down on a surface, the ultimate aim being to match pairs of alike cards/images. Each turn the player has an opportunity to flip 2 cards over. If the chosen cards **DO NOT** match the cards are flipped back over. If the choosen cards **MATCH**, the cards stay flipped over and the player gets 10 points. Regardless of a match or not the names of the women artists whose images appear on the cards display on a side screen display. 
 
 ## Wire Frames
 ### Mock-up v1
