@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
 
-        //===========THIS FUNCTION IS CLEARING OUT THE FLIPPED CARDS ARRAY=============
+        //====INNER FUNCTION--CLEARS OUT FLIPPED CARDS ARRAY ON TIMEOUT
         setTimeout(() => {
           console.log("clearing flipped cards array");
           card1.textContent = "";
@@ -208,25 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 2000);
     }
 
-    // console.log("right before restart", playerLives);
-    // if (playerLives === 0) {
-    //   scoreArray.push(score);
-    //   console.log("Score Array", scoreArray);
-    //   console.log("two player?", twoPlayerGame);
-    //   if (twoPlayerGame === true) {
-    //     setTimeout(() => {
-    //       restart("🫠 You are out of lives...Player two's turn!");
-    //       console.log("checking score array", scoreArray);
-    //       scoreCount.textContent = `FINAL: ${scoreArray[0]}`;
-    //     }, 600);
-    //     // ! RUN ANOTHER 2 PLAYER FUNCTION IN HERE?? LINKED AS INNER FUNCTION
-    //   } else {
-    //     setTimeout(() => {
-    //       restart("🫠 You are out of lives...try again");
-    //     }, 600);
-    //   }
-    // }
-
     // CONDITIONAL CHECKING TO SEE IF GAME WAS WON
     if (toggleCard.length === 16) {
       scoreArray.push(score);
@@ -235,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ! THIS WAS MOVED FURTHER UP IN CODE - LEAVING COMMENTED OUT FOR THE MOMENT
-    //     //===========THIS FUNCTION IS CLEARING OUT THE FLIPPED CARDS ARRAY=============
+    //===========THIS FUNCTION IS CLEARING OUT THE FLIPPED CARDS ARRAY=============
     //     setTimeout(() => {
     //       console.log("clearing flipped cards array");
     //       card1.textContent = "";
@@ -245,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //   }, 2700);
     // }
 
-    //====INNER FUNCTION >> KEEPS TRACK OF SCORE
+    //====INNER FUNCTION--KEEPS TRACK OF SCORE===============
     function scoreKeeper() {
       score += 10;
       console.log("score function scoreKeeper", score);
@@ -275,10 +256,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     });
 
-    playerLives = 6;
-    playerLivesCount.textContent = playerLives;
-    score = 0;
-    scoreCount.textContent = `SCORE: ${score}`;
+    if (onePlayerGame === true) {
+      playerLives = 6;
+      playerLivesCount.textContent = playerLives;
+      score = 0;
+      scoreCount.textContent = `SCORE: ${score}`;
+    }
     setTimeout(() => window.alert(text), 850);
   }; // END OF RESTART FUNCTION
 
