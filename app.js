@@ -2,7 +2,7 @@ console.log("Memory Card Game - Can You Name Five Women Artist?");
 
 document.addEventListener("DOMContentLoaded", () => {
   // ELEMENT SELECTORS
-  const section = document.querySelector("section");
+  // const section = document.querySelector("section");
   const card1 = document.querySelector("#artist1");
   const card2 = document.querySelector("#artist2");
   const gameBoard = document.querySelector(".gameBoard");
@@ -58,15 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // console.log(typeof getData());
 
   //============================
-  // RANDOMIZE FUNCTION
-  //============================
-  const randomize = () => {
-    const cardData = getData();
-    cardData.sort(() => Math.random() - 0.5);
-    return cardData;
-  }; // END OF RANDOMIZE FUNCTION
-
-  //============================
   // START GAME FUNCTION
   //============================
   const startGame = () => {
@@ -108,6 +99,15 @@ document.addEventListener("DOMContentLoaded", () => {
   } // END OF SCOREKEEPER FUNCTION
 
   //============================
+  // RANDOMIZE FUNCTION
+  //============================
+  const randomize = () => {
+    const cardData = getData();
+    cardData.sort(() => Math.random() - 0.5);
+    return cardData;
+  }; // END OF RANDOMIZE FUNCTION
+
+  //============================
   //CARD GENERATOR FUNCTION
   //============================
   const cardGenerator = () => {
@@ -145,66 +145,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const checkCards = e => {
     const clickedCard = e.target;
     flippedCardsArray.push(clickedCard);
-    clickedCard.classList.add("flipped");
-    const flippedCards = document.querySelectorAll(".flipped");
     const matched = document.querySelectorAll(".matchedCard");
-    console.log(
-      "flipped Cards Array, holding cards that have been flipped",
-      flippedCardsArray
-    );
+    console.log("flipped Cards ARRAY", flippedCardsArray);
     console.log("clicked card", clickedCard);
-    console.log("matched toggle", matched);
+    // console.log("matched toggle", matched);
 
-    //Logic
+    //LOGIC BEHING MATCHES
     if (flippedCardsArray.length === 2) {
       card1.textContent = flippedCardsArray[0].getAttribute("name");
       card2.textContent = flippedCardsArray[1].getAttribute("name");
-
-      // const lockCards = document.querySelectorAll(".card");
-      const gameBoard = document.querySelector(".gameBoard");
       gameBoard.classList.toggle("lock");
 
       setTimeout(() => {
         if (card1.textContent === card2.textContent) {
           console.log("match");
           scoreKeeper();
-          flippedCards.forEach(card => {
-            card.classList.remove("flipped");
+          flippedCardsArray.forEach(card => {
             card.style.pointerEvents = "none";
           });
-          gameBoard.classList.remove("lock");
         } else {
           console.log("not a match");
-          // console.log("not a match - player lives", playerLives);
-          flippedCards.forEach(card => {
-            card.classList.remove("flipped");
-            // setTimeout(() => {
+          flippedCardsArray.forEach(card => {
             card.classList.remove("matchedCard");
-            gameBoard.classList.remove("lock");
-            // }, 400);
           });
           playerLives--;
-          console.log("player lives subtraction", playerLives);
           playerLivesCount.textContent = playerLives;
-
-          console.log("right before restart", playerLives);
-          if (playerLives === 0) {
-            scoreArray.push(score);
-            console.log("Score Array", scoreArray);
-            console.log("two player?", twoPlayerGame);
-            if (twoPlayerGame === true) {
-              setTimeout(() => {
-                restart("🫠 You are out of lives...Player two's turn!");
-                console.log("checking score array", scoreArray);
-                scoreCount.textContent = `FINAL: ${scoreArray[0]}`;
-              }, 600);
-              // ! RUN ANOTHER 2 PLAYER FUNCTION IN HERE?? LINKED AS INNER FUNCTION
-            } else {
-              setTimeout(() => {
-                restart("🫠 You are out of lives...try again");
-              }, 200);
-            }
-          }
         }
 
         //====INNER FUNCTION--CLEARS OUT FLIPPED CARDS ARRAY ON TIMEOUT
@@ -213,15 +178,35 @@ document.addEventListener("DOMContentLoaded", () => {
           card1.textContent = "";
           card2.textContent = "";
           flippedCardsArray = [];
-        }, 750);
-      }, 1800);
-    }
+          gameBoard.classList.toggle("lock");
+        }, 600);
 
-    // CONDITIONAL CHECKING TO SEE IF GAME WAS WON
-    if (matched.length === 16) {
-      scoreArray.push(score);
-      console.log("Score Array", scoreArray);
-      restart("You're a champ 🏆");
+        // CONDITIONAL CHECKING TO SEE IF GAME WAS WON
+        if (matched.length === 16) {
+          setTimeout(() => {
+            console.log("Score Array", scoreArray);
+            restart("You're a champ 🏆");
+          }, 800);
+        }
+
+        if (playerLives === 0) {
+          scoreArray.push(score);
+          console.log("Score Array", scoreArray);
+          console.log("two player?", twoPlayerGame);
+          if (twoPlayerGame === true) {
+            setTimeout(() => {
+              restart("🫠 You are out of lives...Player two's turn!");
+              console.log("checking score array", scoreArray);
+              scoreCount.textContent = `FINAL: ${scoreArray[0]}`;
+            }, 200);
+            // ! RUN ANOTHER 2 PLAYER FUNCTION IN HERE?? LINKED AS INNER FUNCTION
+          } else {
+            setTimeout(() => {
+              restart("🫠 You are out of lives...try again");
+            }, 100);
+          }
+        }
+      }, 1600);
     }
 
     // ! THIS WAS MOVED FURTHER UP IN CODE - LEAVING COMMENTED OUT FOR THE MOMENT
@@ -241,10 +226,11 @@ document.addEventListener("DOMContentLoaded", () => {
   //============================
   const restart = text => {
     console.log("Restart Happening");
+    // randomize();
     let cardData = randomize();
     let faces = document.querySelectorAll(".face");
     let cards = document.querySelectorAll(".card");
-    gameBoard.classList.toggle("lock");
+    gameBoard.classList.remove("lock");
 
     cardData.forEach((item, index) => {
       cards[index].classList.remove("matchedCard");
