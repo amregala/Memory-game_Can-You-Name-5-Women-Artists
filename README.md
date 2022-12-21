@@ -1,7 +1,7 @@
 # Can you name 5 women artists?
  
 ## Project Description
-The concept for this game is inspired by a social media campaign from the National Museum of Women in the Arts (NMWA), which aims to call attention to the inequities present in the art world in which - women remain dramatically underrepresented and undervalued in museums, galleries and auctions houses - by asking, **Can you name five women artists?**
+The concept for this game is inspired by a social media campaign from the National Museum of Women in the Arts (NMWA), which aims to call attention to the inequities present in the art world in which - women remain dramatically underrepresented and undervalued in museums, galleries and auctions houses - by asking, **Can you name five women artists?** 
 
 More often than not people can barely name one women artist and with that question in mind this game was created to help people learn the names of more women artists. 
 

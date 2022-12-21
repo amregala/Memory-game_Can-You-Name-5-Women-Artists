@@ -138,35 +138,26 @@ div.fadeIn {
 /* STYLING FOR ELEMENTS ON SIDEBAR*/
 /*--------------------------------*/
 
-.match-container {
-  height: 100vh;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  flex-wrap: wrap;
-  align-items: center;
-  align-content: center;
-  /* display: flex; */
-  /* display: inline; */
-  /* background-color: black; */
-  /* justify-content: center; */
-  /* z-index: -1; */
-  /* transition: opacity 0.5s ease 0.5s; */
-}
-
 .resultsDisplay {
-  position: relative;
-  justify-content: space-evenly;
+  /* position: relative; */
+  /* display: inline-flex; */
+  justify-content: space-around;
   width: 100%;
   padding: 15px;
   font-size: 16px;
-  display: flex;
+  /* display: flex; */
   background-color: rgb(0, 26, 128);
   border-bottom: 3px solid #febf3d;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   color: #febf3d;
   font-family: "Comfortaa", sans-serif;
+}
+
+#gameHeader {
+  /* display: inline; */
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  /* text-align: center; */
 }
 
 #playerOne p {
@@ -188,11 +179,29 @@ p.timer {
   visibility: visible;
 }
 
+/*----------------------------------*/
+/* STYLING MAIN BODY DIV 
+/*--------------------------------*/
+
+.match-container {
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: relative;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* z-index: -1; */
+  /* transition: opacity 0.5s ease 0.5s; */
+}
 .side {
-  margin-left: 15px;
+  /* margin-left: 15px; */
   margin-top: 10px;
+  margin-right: 20px;
   padding: 20px;
-  width: 35%;
+  width: 400px;
+  height: 400px;
+
   flex-wrap: wrap;
   background-color: rgb(0, 26, 128);
   border-radius: 15px;
@@ -208,31 +217,55 @@ p.timer {
   font-family: "Open Sans", sans-serif;*/
 }
 
+.artist-name {
+  /* display: inline-block; */
+  width: 400px;
+  height: 180px;
+  background-color: rgb(0, 26, 128);
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  /* padding: 8px; */
+}
+
+#artistDisplay {
+  /* display: inline-block; */
+  margin: 0 auto;
+  /* display: block; */
+  width: 93%;
+  height: auto;
+}
+
 .cardTitle {
-  margin-top: 20px;
+  display: flex;
+  margin-top: 10px;
+  /* padding-top: 6px; */
   font-family: "Poppins", sans-serif;
   color: #fff3c7;
-  font-size: 12px;
-  font-family: "Comfortaa", sans-serif;
+  font-size: 14px;
+  /* font-family: "Comfortaa", sans-serif; */
 }
 .artist-bar {
   padding-top: 10px;
-  padding-left: 8px;
+  /* padding-left: 8px; */
+  margin-top: 6px;
   background-color: #febf3d;
   color: black;
   font-family: "Comfortaa", sans-serif;
-  font-size: 14px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
+  font-size: 18px;
   height: 40px;
-  width: 75%;
+  width: 95%;
   border-radius: 50px;
   border: 1px solid black;
-  align-self: center;
+  text-align: center;
+  /* align-self: center; */
 }
 .about {
   margin-top: 18px;
   font-family: "Comfortaa", sans-serif;
   color: #febf3d;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.6;
 }
 
@@ -241,27 +274,29 @@ p.timer {
 /*--------------------------------*/
 
 #gameBoardContainer {
-  margin-top: 35px;
-  display: flex;
-  flex-wrap: wrap;
-  display: inline-flex;
+  margin-top: 10px;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* display: inline-flex; */
   justify-content: center;
-  align-content: space-between;
+  /* align-content: space-between; */
   align-items: center;
   /* border: solid rgb(79, 176, 169) 4px; */
 }
 
 .gameBoard {
-  width: 550px;
-  height: 550px;
+  width: 400px;
+  height: 400px;
+  background-color: rgb(0, 26, 128);
+  border-radius: 15px;
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-template-rows: auto auto auto auto;
-  grid-gap: 20px;
-  padding: 10px;
-  perspective: 800px;
-  background-color: rgb(0, 26, 128);
-  border-radius: 15px;
+  grid-gap: 12px;
+  padding: 8px;
+  margin-right: 20px;
+  /* perspective: 800px; */
+
   /* object-fit: contain; */
   /* margin-top: 24px;
   margin-bottom: 40px; */
@@ -303,7 +338,7 @@ p.timer {
   backface-visibility: hidden;
 }
 
-.toggleCard {
+.matchedCard {
   transform: rotateY(180deg);
   pointer-events: none;
 }

@@ -100,6 +100,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  //====FUNCTION KEEPS TRACK OF SCORE===============
+  function scoreKeeper() {
+    score += 10;
+    console.log("score function scoreKeeper", score);
+    return (scoreCount.textContent = `SCORE: ${score}`);
+  } // END OF SCOREKEEPER FUNCTION
+
   //============================
   //CARD GENERATOR FUNCTION
   //============================
@@ -108,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Generate the HTML
     cardData.forEach(item => {
-      // console.log(item);
+      console.log(item);
       const card = document.createElement("div");
       const face = document.createElement("img");
       const back = document.createElement("div");
@@ -125,7 +132,8 @@ document.addEventListener("DOMContentLoaded", () => {
       card.appendChild(back);
 
       card.addEventListener("click", e => {
-        card.classList.toggle("toggleCard");
+        // card.classList.toggle("toggleCard");
+        card.classList.toggle("matchedCard");
         checkCards(e);
       });
     });
@@ -137,26 +145,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const checkCards = e => {
     const clickedCard = e.target;
     flippedCardsArray.push(clickedCard);
-    console.log("flipped Cards Array", flippedCardsArray);
     clickedCard.classList.add("flipped");
     const flippedCards = document.querySelectorAll(".flipped");
-    const toggleCard = document.querySelectorAll(".toggleCard");
+    const matched = document.querySelectorAll(".matchedCard");
+    console.log(
+      "flipped Cards Array, holding cards that have been flipped",
+      flippedCardsArray
+    );
     console.log("clicked card", clickedCard);
-    console.log("toggle on", toggleCard);
+    console.log("matched toggle", matched);
 
     //Logic
-    if (flippedCards.length === 2) {
+    if (flippedCardsArray.length === 2) {
       card1.textContent = flippedCardsArray[0].getAttribute("name");
       card2.textContent = flippedCardsArray[1].getAttribute("name");
-      const lockCards = document.querySelectorAll(".card");
+
+      // const lockCards = document.querySelectorAll(".card");
       const gameBoard = document.querySelector(".gameBoard");
       gameBoard.classList.toggle("lock");
 
       setTimeout(() => {
-        if (
-          flippedCards[0].getAttribute("name") ===
-          flippedCards[1].getAttribute("name")
-        ) {
+        if (card1.textContent === card2.textContent) {
           console.log("match");
           scoreKeeper();
           flippedCards.forEach(card => {
@@ -166,16 +175,16 @@ document.addEventListener("DOMContentLoaded", () => {
           gameBoard.classList.remove("lock");
         } else {
           console.log("not a match");
-          console.log("not a match - player lives", playerLives);
+          // console.log("not a match - player lives", playerLives);
           flippedCards.forEach(card => {
             card.classList.remove("flipped");
-            setTimeout(() => {
-              card.classList.remove("toggleCard");
-              gameBoard.classList.remove("lock");
-            }, 400);
+            // setTimeout(() => {
+            card.classList.remove("matchedCard");
+            gameBoard.classList.remove("lock");
+            // }, 400);
           });
           playerLives--;
-          console.log("subtraction happened", playerLives);
+          console.log("player lives subtraction", playerLives);
           playerLivesCount.textContent = playerLives;
 
           console.log("right before restart", playerLives);
@@ -193,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
               setTimeout(() => {
                 restart("🫠 You are out of lives...try again");
-              }, 600);
+              }, 200);
             }
           }
         }
@@ -203,13 +212,13 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log("clearing flipped cards array");
           card1.textContent = "";
           card2.textContent = "";
-          flippedCardsArray.length = 0;
+          flippedCardsArray = [];
         }, 750);
-      }, 2000);
+      }, 1800);
     }
 
     // CONDITIONAL CHECKING TO SEE IF GAME WAS WON
-    if (toggleCard.length === 16) {
+    if (matched.length === 16) {
       scoreArray.push(score);
       console.log("Score Array", scoreArray);
       restart("You're a champ 🏆");
@@ -225,13 +234,6 @@ document.addEventListener("DOMContentLoaded", () => {
     //     }, 750);
     //   }, 2700);
     // }
-
-    //====INNER FUNCTION--KEEPS TRACK OF SCORE===============
-    function scoreKeeper() {
-      score += 10;
-      console.log("score function scoreKeeper", score);
-      return (scoreCount.textContent = `SCORE: ${score}`);
-    } // END OF SCOREKEEPER FUNCTION
   }; //END OF CHECK CARDS FUNCTION
 
   //============================
@@ -245,15 +247,15 @@ document.addEventListener("DOMContentLoaded", () => {
     gameBoard.classList.toggle("lock");
 
     cardData.forEach((item, index) => {
-      cards[index].classList.remove("toggleCard");
+      cards[index].classList.remove("matchedCard");
       //cards.classList.toggle("lock");
       //Randomize
-      setTimeout(() => {
-        cards[index].style.pointerEvents = "all";
-        faces[index].src = item.imgSrc;
-        cards[index].setAttribute("name", item.name);
-        gameBoard.classList.remove("lock");
-      }, 1000);
+      // setTimeout(() => {
+      cards[index].style.pointerEvents = "all";
+      faces[index].src = item.imgSrc;
+      cards[index].setAttribute("name", item.name);
+      gameBoard.classList.remove("lock");
+      // }, 1000);
     });
 
     if (onePlayerGame === true) {
@@ -262,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
       score = 0;
       scoreCount.textContent = `SCORE: ${score}`;
     }
-    setTimeout(() => window.alert(text), 850);
+    setTimeout(() => window.alert(text), 200);
   }; // END OF RESTART FUNCTION
 
   // INVOKING MAIN GAME FUNCTION

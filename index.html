@@ -34,31 +34,63 @@
         </div> 
         <!--END OF INTRO CONTAINER-->
 
+    
         
-    <div class="match-container">
-
+  
+     
     <div class="resultsDisplay">
+      <h1 id="gameHeader" >Can you name five women artists?</h1>
       <div class="player" id="playerOne">
-      <p class="playerTitle">Player 1 > > > > ></p>
-      <p>LIVES: <span class="lives" id="p1Lives"></span></p>
-      <p> <span class="statusBar" id="score"></span></p>
+        <p class="playerTitle">Player 1 > > > > ></p>
+        <p>LIVES: <span class="lives" id="p1Lives"></span></p>
+        <p> <span class="statusBar" id="score"></span></p>
       </div>
       <div class="player" id="playerTwo">
         <p class="playerTitle">Player 2 > > > > ></p>
         <p>LIVES: <span class="lives" id="p2Lives"></span></p>
         <p>SCORE: <span class="statusBar" id="p2Score"></span></p>
-        </div>
+      </div>
     
     </div> <!--END OF RESULTS DISPLAY CONTAINER-->
+
+    <div class="match-container">
+    <div class="side">
+      <h1 >Can you name five women artists?</h1>
+      <!-- <div class="artist-name">
+        <p class="cardTitle">Card 1:</p>
+        <p class="artist-bar"><span id="artist1"></span></p>
+        <p class="cardTitle">Card 2:</p>
+        <p class="artist-bar"><span id="artist2"></span></p>
+      </div> -->
+      <p class="about">
+        Since 2016, the National Museum of Women in the Arts (NMWA) has been
+        asking this question on social media each March during Women's History
+        Month. Using the hastag #5WomenArtists, the campaign calls attention to
+        the fact that women have not been treated equally in the art world, and
+        today they remain dramatically underrepresented and undervalued in
+        museums, galleries, and auction houses.
+      </p>
+
+      <!-- <div class="artist-name">
+        <p class="cardTitle">Card 1:</p>
+        <p class="artist-bar"><span id="artist1"></span></p>
+        <p class="cardTitle">Card 2:</p>
+        <p class="artist-bar"><span id="artist2"></span></p>
+      </div> -->
+      </div> <!--END OF SIDE DIV CONTAINER-->
 
 
     <!--START OF GAMEBOARD CONATINER WHICH HOLDS THE GAMEBOARD AND SIDE DISPLAY WHICH SHOWCASES NAMES OF ARTISTS-->
 
-<div id= "gameBoardContainer">
+<!-- <div id= "gameBoardContainer"> -->
+
+  <!-- <h1 id="gameHeader" >Can you name five women artists?</h1> -->
+
+  <div id= "gameBoardContainer">
     
   <div class="gameBoard"></div><!--END OF GAMEBOARD, WHICH IS GENERATED IN APP.JS FILE-->
   
-    <div class="side">
+    <!-- <div class="side">
       <h1 >Can you name five women artists?</h1>
       <div class="artist-name">
         <p class="cardTitle">Card 1:</p>
@@ -74,9 +106,19 @@
         today they remain dramatically underrepresented and undervalued in
         museums, galleries, and auction houses.
       </p>
-      </div> <!--END OF SIDE DIV CONTAINER-->
+      </div> END OF SIDE DIV CONTAINER -->
   </div> <!--END OF GAMEBOARD CONTAINER-->
-  </div><!--END OF MATCH CONTAINER-->
+
+  <div class="artist-name">
+    <div id="artistDisplay">
+      <p class="cardTitle">Card 1:</p>
+      <p class="artist-bar"><span id="artist1"></span></p>
+      <p class="cardTitle">Card 2:</p>
+      <p class="artist-bar"><span id="artist2"></span></p>
+    </div>
+  </div>
+
+</div><!--END OF MATCH CONTAINER-->
 
 
 </body>
