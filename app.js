@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         p2Score.textContent = score;
       }, 500);
     });
+    cardGenerator();
   };
 
   //====FUNCTION KEEPS TRACK OF SCORE===============
@@ -132,63 +133,75 @@ document.addEventListener("DOMContentLoaded", () => {
       card.appendChild(back);
 
       card.addEventListener("click", e => {
-        // card.classList.toggle("toggleCard");
         card.classList.toggle("matchedCard");
-        checkCards(e);
+        const clickedCard = e.target;
+        flippedCardsArray.push(clickedCard);
+        const firstCard = flippedCardsArray[0];
+        const secondCard = flippedCardsArray[1];
+
+        if (flippedCardsArray.length === 1) {
+          card1.textContent = firstCard.getAttribute("name");
+        }
+        if (flippedCardsArray.length === 2) {
+          card1.textContent = firstCard.getAttribute("name");
+          card2.textContent = secondCard.getAttribute("name");
+          checkCards(e);
+        }
       });
     });
   }; // END OF CARD GENERATOR FUNCTION
 
   //============================
+  // CLEARING OUT FUNCTION - EMPTIES ARRAY AFTER EACH TURN
+  //============================
+  const clearOut = () => {
+    console.log("clearing flipped cards array");
+    card1.textContent = "";
+    card2.textContent = "";
+    flippedCardsArray = [];
+    gameBoard.classList.toggle("lock");
+  }; // END OF CLEARING OUT FUNCTION
+
+  const matchCheck = () => {
+    const matched = document.querySelectorAll(".matchedCard");
+    if (matched.length === 16) {
+      console.log("Score Array", scoreArray);
+      restart("You're a champ 🏆");
+    }
+  };
+
+  //============================
   // CHECK CARDS FUNCTION
   //============================
   const checkCards = e => {
-    const clickedCard = e.target;
-    flippedCardsArray.push(clickedCard);
-    const matched = document.querySelectorAll(".matchedCard");
     console.log("flipped Cards ARRAY", flippedCardsArray);
-    console.log("clicked card", clickedCard);
-    // console.log("matched toggle", matched);
+    gameBoard.classList.toggle("lock");
 
-    //LOGIC BEHING MATCHES
-    if (flippedCardsArray.length === 2) {
-      card1.textContent = flippedCardsArray[0].getAttribute("name");
-      card2.textContent = flippedCardsArray[1].getAttribute("name");
-      gameBoard.classList.toggle("lock");
+    setTimeout(() => {
+      if (card1.textContent === card2.textContent) {
+        console.log("match");
+        scoreKeeper();
+        flippedCardsArray.forEach(card => {
+          card.style.pointerEvents = "none";
+        });
+      } else {
+        console.log("not a match");
+        flippedCardsArray.forEach(card => {
+          card.classList.toggle("matchedCard");
+        });
+        playerLives--;
+        playerLivesCount.textContent = playerLives;
+      }
+
+      clearOut();
+
+      // CONDITIONAL CHECKING TO SEE IF GAME WAS WON
+      // if (matched.length === 16) {
+      //   console.log("Score Array", scoreArray);
+      //   restart("You're a champ 🏆");
+      // }
 
       setTimeout(() => {
-        if (card1.textContent === card2.textContent) {
-          console.log("match");
-          scoreKeeper();
-          flippedCardsArray.forEach(card => {
-            card.style.pointerEvents = "none";
-          });
-        } else {
-          console.log("not a match");
-          flippedCardsArray.forEach(card => {
-            card.classList.remove("matchedCard");
-          });
-          playerLives--;
-          playerLivesCount.textContent = playerLives;
-        }
-
-        //====INNER FUNCTION--CLEARS OUT FLIPPED CARDS ARRAY ON TIMEOUT
-        setTimeout(() => {
-          console.log("clearing flipped cards array");
-          card1.textContent = "";
-          card2.textContent = "";
-          flippedCardsArray = [];
-          gameBoard.classList.toggle("lock");
-        }, 600);
-
-        // CONDITIONAL CHECKING TO SEE IF GAME WAS WON
-        if (matched.length === 16) {
-          setTimeout(() => {
-            console.log("Score Array", scoreArray);
-            restart("You're a champ 🏆");
-          }, 800);
-        }
-
         if (playerLives === 0) {
           scoreArray.push(score);
           console.log("Score Array", scoreArray);
@@ -201,24 +214,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 200);
             // ! RUN ANOTHER 2 PLAYER FUNCTION IN HERE?? LINKED AS INNER FUNCTION
           } else {
-            setTimeout(() => {
-              restart("🫠 You are out of lives...try again");
-            }, 100);
+            restart("🫠 You are out of lives...try again");
           }
         }
-      }, 1600);
-    }
+      }, 100);
 
-    // ! THIS WAS MOVED FURTHER UP IN CODE - LEAVING COMMENTED OUT FOR THE MOMENT
-    //===========THIS FUNCTION IS CLEARING OUT THE FLIPPED CARDS ARRAY=============
-    //     setTimeout(() => {
-    //       console.log("clearing flipped cards array");
-    //       card1.textContent = "";
-    //       card2.textContent = "";
-    //       flippedCardsArray.length = 0;
-    //     }, 750);
-    //   }, 2700);
-    // }
+      matchCheck();
+    }, 1200);
   }; //END OF CHECK CARDS FUNCTION
 
   //============================
@@ -226,23 +228,8 @@ document.addEventListener("DOMContentLoaded", () => {
   //============================
   const restart = text => {
     console.log("Restart Happening");
-    // randomize();
-    let cardData = randomize();
-    let faces = document.querySelectorAll(".face");
-    let cards = document.querySelectorAll(".card");
-    gameBoard.classList.remove("lock");
 
-    cardData.forEach((item, index) => {
-      cards[index].classList.remove("matchedCard");
-      //cards.classList.toggle("lock");
-      //Randomize
-      // setTimeout(() => {
-      cards[index].style.pointerEvents = "all";
-      faces[index].src = item.imgSrc;
-      cards[index].setAttribute("name", item.name);
-      gameBoard.classList.remove("lock");
-      // }, 1000);
-    });
+    window.alert(text);
 
     if (onePlayerGame === true) {
       playerLives = 6;
@@ -250,12 +237,26 @@ document.addEventListener("DOMContentLoaded", () => {
       score = 0;
       scoreCount.textContent = `SCORE: ${score}`;
     }
-    setTimeout(() => window.alert(text), 200);
+
+    let cardData = randomize();
+
+    let faces = document.querySelectorAll(".face");
+    let cards = document.querySelectorAll(".card");
+    // gameBoard.classList.remove("lock");
+
+    cardData.forEach((card, index) => {
+      cards[index].classList.remove("matchedCard");
+      cards[index].style.pointerEvents = "all";
+      faces[index].src = card.imgSrc;
+      cards[index].setAttribute("name", card.name);
+    });
+    console.log(cardData);
+
+    gameBoard.classList.remove("lock");
   }; // END OF RESTART FUNCTION
 
   // INVOKING MAIN GAME FUNCTION
   startGame();
-  cardGenerator();
 }); // this belongs to the DOM CONTENT LOADED AT VERY TOP
 
 //section.style.pointerEvents = none;
