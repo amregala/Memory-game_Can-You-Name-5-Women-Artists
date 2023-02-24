@@ -75,20 +75,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 500);
     });
 
-    twoPlayer.addEventListener("click", () => {
-      setTimeout(() => {
-        console.log("fadeOut happened, clicked on 2 player");
-        onePlayerGame = false;
-        twoPlayerGame = true;
-        console.log("1p", onePlayerGame);
-        console.log("2p", twoPlayerGame);
-        introScreen.classList.add("fadeOut");
-        const p2Lives = document.querySelector("#p2Lives");
-        const p2Score = document.querySelector("#p2Score");
-        p2Lives.textContent = playerLives;
-        p2Score.textContent = score;
-      }, 500);
-    });
+    // twoPlayer.addEventListener("click", () => {
+    //   setTimeout(() => {
+    //     console.log("fadeOut happened, clicked on 2 player");
+    //     onePlayerGame = false;
+    //     twoPlayerGame = true;
+    //     console.log("1p", onePlayerGame);
+    //     console.log("2p", twoPlayerGame);
+    //     introScreen.classList.add("fadeOut");
+    //     const p2Lives = document.querySelector("#p2Lives");
+    //     const p2Score = document.querySelector("#p2Score");
+    //     p2Lives.textContent = playerLives;
+    //     p2Score.textContent = score;
+    //   }, 500);
+    // });
     cardGenerator();
   };
 
